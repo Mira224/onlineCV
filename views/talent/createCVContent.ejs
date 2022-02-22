@@ -1,0 +1,126 @@
+<!--CreateCVContent.ejs-->
+
+<link rel="stylesheet" href="/styles/createCV.css" />
+<div class="container">
+    <div class="columns is-1-mobile">
+
+        <div class="column">
+
+            <div id="p2">Step</div>
+            <div class='progress'>
+                <div class='progress_inner'>
+                    <div class='progress_inner__step'>
+                        <label for='step-1'>Contact</label>
+                    </div>
+                    <div class='progress_inner__step'>
+                        <label for='step-2'>Education</label>
+                    </div>
+                    <div class='progress_inner__step'>
+                        <label for='step-3'>Activity Experience</label>
+                    </div>
+                    <div class='progress_inner__step'>
+                        <label for='step-4'>Work Experience</label>
+                    </div>
+                    <div class='progress_inner__step'>
+                        <label for='step-5'>Skills</label>
+                    </div>
+
+                    <input checked='checked' id='step-1' name='step' type='radio'>
+                    <input id='step-2' name='step' type='radio'>
+                    <input id='step-3' name='step' type='radio'>
+                    <input id='step-4' name='step' type='radio'>
+                    <input id='step-5' name='step' type='radio'>
+                    <div class='progress_inner__bar'></div>
+                    <div class='progress_inner__bar--set'></div>
+                    <div class='progress_inner__tabs'>
+                        <div class='tab tab-0'>
+                            <h1>Contact</h1>
+                            <div>
+                                <form action="/cv/<%= cvid%>/createContact" method="post">
+
+                                    <div class="field">
+                                        <label class="label">Name</label>
+                                        <div class="control">
+                                            <input class="input" type="text" name="name" id="name" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <label class="label">Mobile Number</label>
+                                        <div class="control">
+                                            <input class="input" type="text" name="mobile" id="mobile" required>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <label class="label">Email address</label>
+                                        <div class="control">
+                                            <input class="input" type="email" name="email" id="email" required>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <label class="label">Fax</label>
+                                        <div class="control">
+                                            <input class="input" type="text" name="fax" id="fax" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <div class="control">
+                                            <button class="button is-link" type="submit">Save</button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                                <form action="/cv/<%= cvid%>/contact/<%= contactid%>" method="post">
+                                    <div class="field">
+                                        <div class="control">
+                                            <button class="button is-link" type="submit">Next</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class='tab tab-1'>
+                            <h1>Education</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tortor ipsum, eleifend
+                                vitae massa non, dignissim finibus eros. Maecenas non eros tristique nisl maximus
+                                sollicitudin.</p>
+                        </div>
+                        <div class='tab tab-2'>
+                            <h1>Activity Experience</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tortor ipsum, eleifend
+                                vitae massa non, dignissim finibus eros. Maecenas non eros tristique nisl maximus
+                                sollicitudin.</p>
+                        </div>
+                        <div class='tab tab-3'>
+                            <h1>Work Experience</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tortor ipsum, eleifend
+                                vitae massa non, dignissim finibus eros. Maecenas non eros tristique nisl maximus
+                                sollicitudin.</p>
+                        </div>
+                        <div class='tab tab-4'>
+                            <h1>Skills</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tortor ipsum, eleifend
+                                vitae massa non, dignissim finibus eros. Maecenas non eros tristique nisl maximus
+                                sollicitudin.</p>
+                        </div>
+                    </div>
+                    <div class='progress_inner__status'>
+                        <div class='box_base'></div>
+                        <div class='box_lid'></div>
+                        <div class='box_ribbon'></div>
+                        <div class='box_bow'>
+                            <div class='box_bow__left'></div>
+                            <div class='box_bow__right'></div>
+                        </div>
+                        <div class='box_item'></div>
+                        <div class='box_tag'></div>
+                        <div class='box_string'></div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>

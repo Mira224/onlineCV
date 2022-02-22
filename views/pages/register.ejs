@@ -1,0 +1,54 @@
+<div class="content user-register w-100">
+    <h2 class="main-heading1">Registration</h2>
+    <form id="form-register" class="ajax-with-preview" action="/user/register" method="POST" data-valid="valid()">
+        <section>
+            <h4 class="side-heading2">Account information</h4>
+            <div class="container-fluid">
+                <div class="row">
+                
+                        <label class="flex-shrink-0 col-form-label">Username: </label>
+                        <input class="form-control-reg" type="text" name="username" required>
+                  
+                   
+                        <label class="flex-shrink-0 col-form-label">Email: </label>
+                        <input class="form-control-reg" type="email" name="email" required>
+                     
+                        <label class="flex-shrink-0 col-form-label">Password: </label>
+                        <input id="pw" class="form-control-reg" type="password" name="password" required>
+                 
+                   
+                        <label class="flex-shrink-0 col-form-label">Confirm password: </label>
+                        <input id="confirmpw" class="form-control-reg" type="password" name="ConfirmPassword"
+                            required>
+                   
+
+                   
+                        <label class="flex-shrink-0 col-form-label">Mobile: </label>
+                        <input class="form-control-reg" type="text" name="mobile" size="16" required>
+                    
+
+                    <div class="col-12 col-lg-6 form-group" style="margin:10px">
+
+                        <button id="submit" class="btn btn-danger" type="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+</div>
+
+<script>
+    function valid() {
+        var pw = document.getElementById('pw');
+        var confirmpw = document.getElementById('confirmpw');
+        if (confirmpw.value !== pw.value) {
+            confirmpw.setCustomValidity('Password conflict');
+            return false;
+        }
+        return true;
+    };
+
+    (function () {
+
+    })();
+</script>

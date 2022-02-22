@@ -1,0 +1,55 @@
+<div class="content user-login w-100">
+  
+  <form class="form-inline ajax" action="/user/login" method="POST" onsubmit="submitForm(this);return false"
+    data-alert200="Successfully login" data-alert401="Wrong email or password, please input again."
+    data-callback200="location.assign(new URLSearchParams(window.location.search).get('r') || '/user');">
+    <div class="login-form">
+      <h5 class="main-heading1">User Login</h5>
+      <div class="field">
+        <p class="exampleFormControlInput1">
+          <input class="form-control" type="email" placeholder="Email" name="email" required>
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+        </p>
+      </div>
+
+      <div class="field">
+        <p class="exampleFormControlInput1">
+          <input class="form-control" type="password" placeholder="Password" name="password" required>
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+        </p>
+      </div>
+      <div class="field">
+        <p class="control">
+          <button type="submit">
+            Login
+          </button>
+        </p>
+      </div>
+    </div>
+  </form>
+
+  <script>
+    async function submitForm(formElem) {
+
+      var response = await fetch(formElem.action, {
+        method: formElem.method,
+        body: new FormData(formElem),
+      });
+
+      if (response.ok) {
+        var user = await response.json();
+        alert("Welcome back, " + user.username);
+        location.reload(true);
+      } else if (response.status == 401) {
+        var msg = await response.json();
+        alert(msg);
+      } else {
+        alert(response.statusText);
+      }
+    };
+  </script>
+</div>
