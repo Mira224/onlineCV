@@ -1,0 +1,52 @@
+<div id="addContact">
+    <a href="javascript:showContact()" id="aContact">Add Contact</a>
+
+    <div id="addContact" style="display:none">
+
+        <form action="/cv/addContact/<%= cv.id%>" method="post">
+
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control">
+                    <input class="input" type="text" name="name" id="name" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                    <input class="input" type="text" name="email" id="email">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Mobile</label>
+                <div class="control">
+                    <input class="input" type="text" name="mobile" id="mobile">
+                </div>
+            </div>
+
+
+            <div class="field">
+                <div class="control">
+                    <button class="button is-link" type="submit">Create Contact</button>
+                </div>
+            </div>
+
+        </form>
+
+
+    </div>
+</div>
+<script>
+    function showContact() {
+        document.getElementById("addContact").style.display = "block";
+        document.getElementById("aContact").innerHTML = "Close";
+        document.getElementById("aContact").href = "javascript:hideContact()";
+    }
+
+    function hideContact() {
+        document.getElementById("addContact").style.display = "none";
+        document.getElementById("aContact").innerHTML = "Add Contact";
+        document.getElementById("aContact").href = "javascript:showContact()";
+    }
+</script>

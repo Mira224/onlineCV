@@ -7,14 +7,37 @@
 
 module.exports = {
 
-  create: async function (req, res) {
+  createCV: async function (req, res) {
 
     if (req.method == "GET") return res.view('talent/createCV');
 
     var cv = await CV.create(req.body).fetch();
 
-    return res.view('/talent/createCVContent', { cvid: cv.id });
+    return res.redirect('/cv/content/:'+cv.id,{cv:cv});
   },
+
+  addContent: async function (req, res) {
+
+    if (req.method == "GET") return res.view('talent/addContent');
+   
+    return res.res.status(200).json('');
+
+
+  },
+  addContact: async function (req, res) {
+
+  },
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////
+
   contactCreate: async function (req, res) {
 
     if (req.method == "GET") return res.view('/talent/createCVContent');

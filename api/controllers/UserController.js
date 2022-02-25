@@ -9,46 +9,48 @@ module.exports = {
     login: async function (req, res) {
         if (req.method == 'GET') { return res.view('pages/login'); }
 
-        if (!req.body.email) { return res.badRequest(); }
-        if (!req.body.password) { return res.badRequest(); }
+        if (!req.body.email || !req.body.password) { return res.badRequest(); }
+
 
         var user = await User.findOne({ email: req.body.email });
+        // console.log(user);
+        // console.log(req.body.password);
 
         if (!user) {
-            res.status(401);
-            return res.send('Cannot find user');
+
+            return res.res.status(401).json('User not found');
         }
 
-        const match = await bcrypt.compare(req.body.password, user.password);
+        var match = await bcrypt.compare(req.body.password, user.password);
         if (!match) {
-            res.status(401);
-            return res.send('Wrong password');
-        }
 
+            return res.status(401).json('Wrong password');
+        }
+        console.log('THere');
         //reuse existing session
-        if (!req.session.username) {
-            req.session.username = user.username;
-            req.session.userid = user.id;
-            req.session.email = user.email;
-            req.session.role = user.role;
+        // if (!req.session.email) {
+        //     console.log("Enter")
+        //     req.session.username = user.username;
+        //     req.session.userid = user.id;
+        //     req.session.role = user.role;
 
-            return res.json(user);
-        }
+        //     return res.json(user);
+        // }
         //start a new session for the new login suer
-
+        console.log('Here');
         req.session.regenerate(function (err) {
-
+            console.log("create session");
             if (err) return res.serverError(err);
+            req.session.email = user.email;
             req.session.username = user.username;
             req.session.userid = user.id;
-            req.session.email = user.email;
             req.session.role = user.role;
 
             if (req.session.role == 'admin') {
-                return res.view('pages/homepage');
+                return res.redirect('/tips');
             } else {
 
-                return res.view('pages/homepage');
+                return res.redirect('/tips');
 
             };
 

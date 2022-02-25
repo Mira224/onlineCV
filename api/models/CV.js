@@ -15,6 +15,9 @@ module.exports = {
     link: {
       type: 'string',
     },
+    template:{
+      type: 'string',
+    },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗

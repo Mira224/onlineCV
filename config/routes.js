@@ -20,6 +20,10 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'pages/homepage' },
+  '/tempalte1': { view: 'template/template1' },
+  '/tempalte2': { view: 'template/template2' },
+  '/dark': { view: 'template/dark' },
+
   '/guide':{view:'Tips/guide'},
   '/tips':{view:'Tips/tips'},
   '/user/register': 'UserController.register',
@@ -28,8 +32,16 @@ module.exports.routes = {
   'POST /user/login': 'UserController.login',
   'POST /user/logout': 'UserController.logout',
 
-  'GET /cv/create': 'CVController.create',
-  'POST /cv/create': 'CVController.create',
+  'GET /cv/create': 'CVController.createCV',
+  'POST /cv/create': 'CVController.createCV',
+  
+  'GET /cv/content/:id': 'CVController.addContent',
+  'POST /cv/content/:id': 'CVController.addContent',
+
+  'GET /cv/addContact/:id': 'CVController.addContact',
+  'POST /cv/addContact/:id': 'CVController.addContact',
+  
+  
 
   'GET /cv/:id/createContact': 'CVController.contactCreate',
   'POST /cv/:id/createContact': 'CVController.contactCreate',

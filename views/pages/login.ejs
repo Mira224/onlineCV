@@ -1,14 +1,14 @@
 <div class="content user-login w-100">
   
   
-  <form class="form-inline ajax" action="/user/login" method="POST" onsubmit="submitForm(this);return false"
+  <form action="/user/login" method="POST" onsubmit="submitForm(this);return false"
     data-alert200="Successfully login" data-alert401="Wrong email or password, please input again."
     data-callback200="location.assign(new URLSearchParams(window.location.search).get('r') || '/user');">
     <div class="login-form">
-      <h5 class="main-heading1">User Login</h5>
       <div class="field">
+      <h5 class="main-heading1">User Login</h5>
         <p class="exampleFormControlInput1">
-          <input class="form-control" type="email" placeholder="Email" name="email" required>
+          <input class="input" type="email" placeholder="Email" name="email" id="email" required>
           <span class="icon is-small is-left">
             <i class="fas fa-user"></i>
           </span>
@@ -17,18 +17,18 @@
 
       <div class="field">
         <p class="exampleFormControlInput1">
-          <input class="form-control" type="password" placeholder="Password" name="password" required>
+          <input class="input" type="password" placeholder="Password" name="password" id="password" required>
           <span class="icon is-small is-left">
             <i class="fas fa-lock"></i>
           </span>
         </p>
       </div>
       <div class="field">
-        <p class="control">
-          <button type="submit">
+    
+          <button class="btn-control" type="submit">
             Login
           </button>
-        </p>
+      
       </div>
     </div>
   </form>
