@@ -40,7 +40,14 @@ module.exports.routes = {
 
   'GET /cv/addContact/:id': 'CVController.addContact',
   'POST /cv/addContact/:id': 'CVController.addContact',
-  
+  'GET /cv/addEdu/': 'CVController.addEdu',
+  'POST /cv/:id/addEdu': 'CVController.addEdu',
+  'GET /cv/:id/addPro': 'CVController.addPro',
+  'POST /cv/:id/addPro': 'CVController.addPro',
+  'GET /cv/:id/addSkill': 'CVController.addSkill',
+  'POST /cv/:id/addSkill': 'CVController.addSkill',
+  'GET /cv/:id/addMultimedia': 'CVController.addMultimedia',
+  'POST /cv/:id/addMultimedia': 'CVController.addMultimedia',
   
 
   'GET /cv/:id/createContact': 'CVController.contactCreate',
