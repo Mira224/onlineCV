@@ -8,7 +8,7 @@
       <div class="field">
       <h5 class="main-heading1">User Login</h5>
         <p class="exampleFormControlInput1">
-          <input class="input" type="email" placeholder="Email" name="email" id="email" required>
+          <input class="input form-control" type="email" placeholder="Email" name="email" id="email" required>
           <span class="icon is-small is-left">
             <i class="fas fa-user"></i>
           </span>
@@ -17,7 +17,7 @@
 
       <div class="field">
         <p class="exampleFormControlInput1">
-          <input class="input" type="password" placeholder="Password" name="password" id="password" required>
+          <input class="input form-control" type="password" placeholder="Password" name="password" id="password" required>
           <span class="icon is-small is-left">
             <i class="fas fa-lock"></i>
           </span>
@@ -44,7 +44,11 @@
       if (response.ok) {
         var user = await response.json();
         alert("Welcome back, " + user.username);
-        location.reload(true);
+        // if (user.role == 'admin') {
+        //   location.assign('/admin')
+        // }
+        location.assign('/tips')
+        // location.reload(true);
       } else if (response.status == 401) {
         var msg = await response.json();
         alert(msg);

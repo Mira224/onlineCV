@@ -15,6 +15,9 @@ module.exports = {
     org:{
       type:'string',
     },
+    position:{
+      type:'string',
+    },
     sTime: {
       type: 'string',
     },

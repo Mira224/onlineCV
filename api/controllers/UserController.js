@@ -47,11 +47,11 @@ module.exports = {
             req.session.role = user.role;
 
             if (req.session.role == 'admin') {
-                return res.redirect('/tips');
+                return res.json(req.session)
+                // return res.redirect('/tips');
             } else {
-
-                return res.redirect('/tips');
-
+                return res.json(req.session)
+                // return res.redirect('/tips');
             };
 
         });
@@ -74,7 +74,7 @@ module.exports = {
         if (req.method == "GET") return res.view('pages/register');
 
         let findUser = await User.find({ email: req.body.email });
-        if (typeof (findUser) != 'undefined') {
+        if (findUser.length > 0) {
             console.log(findUser)
             return res.status(409).json("Email already registered");
         }

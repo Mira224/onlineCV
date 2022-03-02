@@ -1,6 +1,6 @@
 <div class="content user-register w-100">
     <h2 class="main-heading1">Registration</h2>
-    <form id="form-register" class="ajax-with-preview" action="/user/register" method="POST" data-valid="valid()">
+    <form id="form-register" class="ajax-with-preview" action="/user/register" method="POST" onsubmit="return valid()">
         <section>
             <h4 class="side-heading2">Account information</h4>
             <div class="container-fluid">
@@ -19,7 +19,7 @@
                    
                         <label class="flex-shrink-0 col-form-label">Confirm password: </label>
                         <input id="confirmpw" class="form-control-reg" type="password" name="ConfirmPassword"
-                            required>
+                            required oninput="this.setCustomValidity('')">
                    
 
                    
@@ -41,7 +41,9 @@
     function valid() {
         var pw = document.getElementById('pw');
         var confirmpw = document.getElementById('confirmpw');
-        if (confirmpw.value !== pw.value) {
+        console.log('valid')
+        confirmpw.setCustomValidity('');
+        if (confirmpw.value != pw.value) {
             confirmpw.setCustomValidity('Password conflict');
             return false;
         }

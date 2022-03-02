@@ -18,7 +18,15 @@ module.exports = {
     template:{
       type: 'string',
     },
-
+    tel:{
+      type:'string'
+    },
+    fax:{
+      type:'string'
+    },
+    education:{
+      type:'json'
+    },
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
@@ -27,10 +35,14 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    cvHasUser: {
-      collection: 'User',
-      via: 'userOwnCV',
+    owner:{
+      model:'User'
     },
+
+    // cvHasUser: {
+    //   collection: 'User',
+    //   via: 'userOwnCV',
+    // },
     cvHasEdu: {
       collection: 'Edu',
       via: 'eduBelongCV'

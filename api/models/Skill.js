@@ -15,6 +15,9 @@ module.exports = {
     content: {
       type: 'string',
     },
+    level:{
+      type: 'string',
+    },
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝

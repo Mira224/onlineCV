@@ -15,6 +15,9 @@ module.exports = {
     title: {
       type: 'string',
     },
+    org:{
+      type: 'string',
+    },
     sTime: {
       type: 'string',
     },

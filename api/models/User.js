@@ -52,7 +52,7 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     userOwnCV: {
       collection: 'CV',
-      via: 'cvHasUser',
+      via: 'owner',
     }
   },
 

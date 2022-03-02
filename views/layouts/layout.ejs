@@ -12,7 +12,7 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <% /* If you want to discourage search engines from indexing this site, uncomment the following line: */%>
     <% /* <meta name="robots" content="noindex"> */%>
-      <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
       <link rel="stylesheet" href="/styles/main.css" />
 
       <!--
@@ -38,12 +38,8 @@
 
       <!--STYLES-->
       <link rel="stylesheet" href="/styles/createCV.css">
-      <link rel="stylesheet" href="/styles/fontawesome-all.min.css">
       <link rel="stylesheet" href="/styles/importer.css">
       <link rel="stylesheet" href="/styles/main.css">
-      <link rel="stylesheet" href="/styles/template/tem-dark.css">
-      <link rel="stylesheet" href="/styles/template/template1.css">
-      <link rel="stylesheet" href="/styles/template/template2.css">
       <!--STYLES END-->
 </head>
 
@@ -63,7 +59,7 @@
       </li>
 
       <div class="navbar-item">
-        <% if (req.session.userrole !='admin' && req.session.userrole !='user' ) { %>
+        <% if (req.session.role !='admin' && req.session.role !='talent' ) { %>
           <div class="buttons">
             <a class="btn btn-outline-info" href='http://localhost:1337/user/register'>
               <strong>Register</strong>
@@ -74,7 +70,7 @@
           </div>
           <% } %>
 
-            <% if (req.session.userrole=='user' ||req.session.userrole=='admin' ) { %>
+            <% if (req.session.role) { %>
               <div> Hi, <%= req.session.username %>
               </div>
               <form action="/user/logout" method="POST">
