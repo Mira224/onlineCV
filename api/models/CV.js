@@ -15,17 +15,35 @@ module.exports = {
     link: {
       type: 'string',
     },
-    template:{
+    template: {
       type: 'string',
     },
-    tel:{
-      type:'string'
+    name: {
+      type: 'string'
     },
-    fax:{
-      type:'string'
+    ps:{type:'string'},
+    email: { type: 'string' },
+    mobile: { type: 'string' },
+    education: {
+      type: 'json'
     },
-    education:{
-      type:'json'
+    work: {
+      type: 'json'
+    },
+    skill: {
+      type: 'json'
+    },
+    activity: {
+      type: 'json'
+    },
+    project: {
+      type: 'json'
+    },
+    reference: {
+      type: 'json'
+    },
+    multimedia: {
+      type: 'json'
     },
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
@@ -35,8 +53,8 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    owner:{
-      model:'User'
+    owner: {
+      model: 'User'
     },
 
     // cvHasUser: {
@@ -71,15 +89,15 @@ module.exports = {
       collection: 'Multimedia',
       via: 'multimediaBelongCV',
     },
-    cvHasContact:{
-      collection:'Contact',
-      via:'contactBelongCV',
+    cvHasContact: {
+      collection: 'Contact',
+      via: 'contactBelongCV',
     },
-    cvHasRef:{
-      collection:'Reference',
-      via:'refBelongCV',
+    cvHasRef: {
+      collection: 'Reference',
+      via: 'refBelongCV',
     },
-  
+
 
   },
 

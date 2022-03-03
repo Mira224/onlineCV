@@ -1,9 +1,9 @@
-<form action="/cv/<%= cv.id %>/addEdu" method="post">
+<form action="/cv/<%= cv.id %>/addWork" method="post">
 
     <div class="field">
-        <label class="label">School</label>
+        <label class="label">Organization</label>
         <div class="control">
-            <input class="input" type="text" name="school" id="school" required>
+            <input class="input" type="text" name="org" id="org" required>
         </div>
     </div>
 
@@ -23,7 +23,7 @@
     <div class="field">
         <label class="label">Description</label>
         <div class="control">
-            <textarea class="textarea" placeholder="Please describe the activity" type="text" name="description" rows="5" required></textarea>
+            <textarea class="textarea" placeholder="Please describe the activity" type="text" name="description" rows="5"></textarea>
         </div>
     </div>
 

@@ -12,121 +12,136 @@ module.exports = {
     if (req.method == "GET") return res.view('talent/createCV');
 
     var cv = await CV.create(req.body).fetch();
-
-    return res.view('talent/createCVContent', { cv: cv });
+    if (!cv) {
+      console.log("not exist.");
+      return res.notFound();
+    }
+    console.log(cv);
+    return res.view('talent/createContent', { cv: cv });
   },
 
-  addContent: async function (req, res) {
+
+  addContact: async function (req, res) {
+
+    if (req.method == "GET") return res.view('talent/createContact', { cv: cv });
 
     var thatCV = await CV.findOne(req.params.id);
 
-    if (!thatCV) return res.notFound();
+    if (!thatCV) return res.status(404).json("CV not found.");
 
-    return res.view('talent/addContent', { cv: thatCV });
+    var updatedCV = await CV.updateOne(req.params.id).set(req.body);
 
-  },
-  addContact: async function (req, res) {
+    if (!updatedCV) return res.notFound();
 
-    // if (req.method == "GET") return res.view('talent/createContact');
-
-    var contact = await Contact.create(req.body).fetch();
-
-    if (!await CV.findOne(req.params.id)) return res.status(404).json("CV not found.");
-
-    var thatContact = await Contact.findOne(contact.id).populate("contactBelongCV", { id: req.params.id });
-
-    if (!thatContact) return res.status(404).json("Contact not found.");
-
-    await CV.addToCollection(req.params.id, "cvHasContact").members(contact.id);
-
-    return res.res.status(200).json('Save Contact');
+    return res.view('talent/createContent', { cv: thatCV })
 
   },
 
-  addContact: async function (req, res) {
-    if (req.method == "GET") {
-
-      var thatContent = await Content.findOne(req.params.id);
-
-      if (!thatContent) return res.notFound();
-
-      return res.view('update/updateContact', { contact: thatContact });
-
-    } else {
-
-      var updatedPerson = await Person.updateOne(req.params.id).set(req.body);
-
-      if (!updatedPerson) return res.notFound();
-
-      return res.ok();
-    }
-  },
-  deleteContact: async function (req, res){
-    var deletedContact = await Contact.destroyOne(req.params.id);
-
-    if (!deletedContact) return res.notFound();
-
-    return res.ok(); 
-  },
   addEdu: async function (req, res) {
-    var edu = await Edu.create(req.body).fetch();
 
-    if (!await CV.findOne(req.params.id)) return res.status(404).json("CV not found.");
+    if (req.method == "GET") return res.view('talent/createEdu', { cv: cv });
 
-    var thatEdu = await Edu.findOne(edu.id).populate("eduBelongCV", { id: req.params.id });
+    var json = new JSONObject();
 
-    if (!thatEdu) return res.status(404).json("Edu not found.");
+    json.put("school", req.params.school);
+    json.put("sTime", req.params.sTime);
+    json.put("eTime", req.params.eTime);
+    json.put('description', req.params.description);
+    message = json.toString();
+    console.log(message);
 
-    await CV.addToCollection(req.params.id, "cvHasEdu").members(edu.id);
+    var thatCV = await CV.findOne(req.params.id);
+    if (!thatCV) return res.status(404).json("CV not found.");
+    await thatCV.education.push(json);
+    console.log(hatCV.education);
 
-    return res.res.status(200).json('Save Edu');
+    return res.view('talent/createContent', { cv: thatCV });
 
   },
+  addWork: async function (req, res) {
 
-  addPro: async function (req, res) {
-    var proj = await Proj.create(req.body).fetch();
+    if (req.method == "GET") return res.view('talent/createWork', { cv: cv });
 
-    if (!await CV.findOne(req.params.id)) return res.status(404).json("CV not found.");
+    var json = new JSONObject();
 
-    var thatProj = await Proj.findOne(proj.id).populate("projBelongCV", { id: req.params.id });
+    json.put("org", req.params.org);
+    json.put("position", req.params.position);
+    json.put("sTime", req.params.sTime);
+    json.put("eTime", req.params.eTime);
+    json.put('description', req.params.description);
+    message = json.toString();
+    console.log(message);
 
-    if (!thatProj) return res.status(404).json("Proj not found.");
+    var thatCV = await CV.findOne(req.params.id);
+    if (!thatCV) return res.status(404).json("CV not found.");
+    await thatCV.work.push(json);
+    console.log(thatCV.work);
 
-    await CV.addToCollection(req.params.id, "cvHasProj").members(proj.id);
+    return res.view('talent/createContent', { cv: thatCV });
 
-    return res.res.status(200).json('Save project');
   },
+  addActivity: async function (req, res) {
 
+    if (req.method == "GET") return res.view('talent/createActivity', { cv: cv });
+
+    var json = new JSONObject();
+
+    json.put("title", req.params.title);
+    json.put("sTime", req.params.sTime);
+    json.put("eTime", req.params.eTime);
+    json.put('description', req.params.description);
+    message = json.toString();
+    console.log(message);
+
+    var thatCV = await CV.findOne(req.params.id);
+    if (!thatCV) return res.status(404).json("CV not found.");
+    await thatCV.activity.push(json);
+    console.log(thatCV.activity);
+
+    return res.view('talent/createContent', { cv: thatCV });
+
+  },
   addSkill: async function (req, res) {
-    var skill = await Skill.create(req.body).fetch();
 
-    if (!await CV.findOne(req.params.id)) return res.status(404).json("CV not found.");
+    if (req.method == "GET") return res.view('talent/createSkill', { cv: cv });
 
-    var thatSkill = await Proj.findOne(skill.id).populate("skillBelongCV", { id: req.params.id });
+    var json = new JSONObject();
 
-    if (!thatSkill) return res.status(404).json("Skill not found.");
+    json.put("content", req.params.content);
+    json.put('level', req.params.level);
+    message = json.toString();
+    console.log(message);
 
-    await CV.addToCollection(req.params.id, "cvHasSkill").members(skill.id);
+    var thatCV = await CV.findOne(req.params.id);
+    if (!thatCV) return res.status(404).json("CV not found.");
+   await thatCV.skill.push(json);
+    console.log(skill);
 
-    return res.res.status(200).json('Save skill');
+    return res.view('talent/createContent', { cv: thatCV });
+
   },
-  addExperience: async function (req, res) {
-    var work = await Work.create(req.body).fetch();
+  addRef: async function (req, res) {
 
-    if (!await CV.findOne(req.params.id)) return res.status(404).json("CV not found.");
+    if (req.method == "GET") return res.view('talent/createRef', { cv: cv });
 
-    var thatWork = await Work.findOne(work.id).populate("workBelongCV", { id: req.params.id });
+    var json = new JSONObject();
 
-    if (!thatWork) return res.status(404).json("Work not found.");
+    json.put("name", req.params.name);
+    json.put("relationship", req.params.relationship);
+    json.put("comment", req.params.comment);
+    json.put('contact', req.params.contact);
+    message = json.toString();
+    console.log(message);
 
-    await CV.addToCollection(req.params.id, "cvHaswork").members(work.id);
+    var thatCV = await CV.findOne(req.params.id);
+    if (!thatCV) return res.status(404).json("CV not found.");
+    var edu = thatCV.education.push(json);
+    console.log(edu);
 
-    return res.res.status(200).json('Save work');
+    return res.view('talent/createContent', { cv: thatCV });
+
   },
 
-  // addMultimedia: async function (req, res) { },
-
-  // generateLink: async function (req, res) { },
 
   /*list all the parts associated with cv*/
   modifyContent: async function (req, res) {
@@ -141,6 +156,15 @@ module.exports = {
   },
 
 
+  update: async function (req, res) { },
+  delete: async function (req, res) { 
+
+    var deletedCV = await Person.destroyOne(req.params.id);
+
+    if (!deletedCV) return res.notFound();
+
+    return res.redirct('/cv/overview'); 
+  },
 
 
 
@@ -148,34 +172,13 @@ module.exports = {
 
   //////////////////////////////////////////////
 
-  contactCreate: async function (req, res) {
 
-    if (req.method == "GET") return res.view('/talent/createCVContent');
-
-    var contact = await Contact.create(req.body).fetch();
-    return res.redirect('/cv/' + req.cvid + '/contact/' + contact.id);
-
-  },
-  contactAsso: async function (req, res) {
-
-    if (!await CV.findOne(req.params.id)) return res.status(404).json("CV not found.");
-
-    var thatCon = await Contact.findOne(req.params.fk).populate("contactBelongCV", { id: req.params.id });
-
-    if (!thatCon) return res.status(404).json("Contact not found.");
-
-
-    await CV.addToCollection(req.params.id, "cvHasContact").members(req.params.fk);
-
-    return res.redirect('/cv/' + req.cvid + '/contact/' + contact.id);
-  },
-
-
-  cv: async function(req, res) {
-    let user = await User.findOne({username:req.params.username})
+  cv: async function (req, res) {
+    let user = await User.findOne({ username: req.params.username })
 
     return res.view('')
-  }
+  },
+
 
 };
 

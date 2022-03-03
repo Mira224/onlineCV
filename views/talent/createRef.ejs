@@ -1,5 +1,4 @@
-<!--create.ejs-->
-<form action="/cv/<%= cv.id %>/addContact" method="post">
+<form action="/cv/<%= cv.id %>/addRef" method="post">
 
     <div class="field">
         <label class="label">Name</label>
@@ -8,25 +7,26 @@
         </div>
     </div>
 
+   
     <div class="field">
-        <label class="label">Mobile Number</label>
+        <label class="label">Relationship</label>
         <div class="control">
-            <input class="input" type="text" name="mobile" id="mobile" required>
+            <input class="input" type="text" name="relationship" id="relationship">
         </div>
     </div>
     <div class="field">
-        <label class="label">Email address</label>
+        <label class="label">Contact</label>
         <div class="control">
-            <input class="input" type="email" name="email" id="email" required>
+            <input class="input" type="text" name="contact" id="contact">
         </div>
     </div>
     <div class="field">
-        <label class="label">Objective</label>
+        <label class="label">Comment</label>
         <div class="control">
-            <textarea class="textarea" placeholder="Comment" type="text" name="ps" rows="3" required></textarea>
+            <textarea class="textarea" placeholder="Comment" type="text" name="comment" rows="5" required></textarea>
         </div>
     </div>
-    
+
     <div class="field">
         <div class="control">
             <button class="button is-link" type="submit">Save</button>

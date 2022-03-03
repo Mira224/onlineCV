@@ -1,5 +1,5 @@
 <!--create.ejs-->
-<form action="/activity/create" method="post">
+<form action="/cv/<% cv.id %>/addActivity" method="post">
 
     <div class="field">
         <label class="label">Title</label>
@@ -23,13 +23,14 @@
     <div class="field">
         <label class="label">End Time</label>
         <div class="control">
-            <input class="input" type="date" name="eTime" id="eTime" required>
+            <input class="input" type="date" name="eTime" id="eTime">
         </div>
     </div>
     <div class="field">
         <label class="label">Description</label>
         <div class="control">
-            <textarea class="textarea" placeholder="Please describe the activity" type="text" name="description" rows="5" required></textarea>
+            <textarea class="textarea" placeholder="Please describe the activity" type="text" name="description"
+                rows="5" required></textarea>
         </div>
     </div>
 

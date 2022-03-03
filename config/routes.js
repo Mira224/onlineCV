@@ -35,23 +35,32 @@ module.exports.routes = {
   'GET /cv/create': 'CVController.createCV',
   'POST /cv/create': 'CVController.createCV',
   
-  'GET /cv/content/:id': 'CVController.addContent',
-  'POST /cv/content/:id': 'CVController.addContent',
 
   'GET /cv/:id/addContact': 'CVController.addContact',
   'POST /cv/:id/addContact': 'CVController.addContact',
-  'GET /cv/:id/addEdu/': 'CVController.addEdu',
+  'GET /cv/:id/addEdu': 'CVController.addEdu',
   'POST /cv/:id/addEdu': 'CVController.addEdu',
-  'GET /cv/:id/addPro': 'CVController.addPro',
-  'POST /cv/:id/addPro': 'CVController.addPro',
+  'GET /cv/:id/addWork': 'CVController.addWork',
+  'POST /cv/:id/addWork': 'CVController.addWork',
   'GET /cv/:id/addSkill': 'CVController.addSkill',
   'POST /cv/:id/addSkill': 'CVController.addSkill',
-  'GET /cv/:id/addExperience': 'CVController.addExperience',
-  'POST /cv/:id/addExperience': 'CVController.addExperience',
-  // 'GET /cv/:id/addMultimedia': 'CVController.addMultimedia',
-  // 'POST /cv/:id/addMultimedia': 'CVController.addMultimedia',
+  'GET /cv/:id/addActivity': 'CVController.addActivity',
+  'POST /cv/:id/addActivity': 'CVController.addActivity',
+  'GET /cv/:id/addRef': 'CVController.addRef',
+  'POST /cv/:id/addRef': 'CVController.addRef',
+ 
+  'GET /cv/overview': 'UserController.overview',
+  'POST /cv/overview': 'UserController.overview',
+  
 
-  'GET /:username/cv/:title': 'CVController.cv',
+
+  'GET /:id/cv/:title': 'CVController.cv',
+  'POST /cv/delete/:id': 'CVController.delete',
+
+  // 'GET /cv/update/:id':'CVController.update,',
+  // 'POST /cv/update/:id':'CVController.update,',
+  // 'GET /cv/delte/:id':'CVController.delete,',
+  // 'POST /cv/delete/:id':'CVController.delete,',
   
 
   // 'GET /cv/:id/createContact': 'CVController.contactCreate',

@@ -37,7 +37,6 @@
     -->
 
       <!--STYLES-->
-      <link rel="stylesheet" href="/styles/createCV.css">
       <link rel="stylesheet" href="/styles/importer.css">
       <link rel="stylesheet" href="/styles/main.css">
       <!--STYLES END-->
@@ -56,9 +55,6 @@
         <a class="nav-link" href="http://localhost:1337/cv/create">Create CV</a>
       </li>
 
-      </li>
-
-      <div class="navbar-item">
         <% if (req.session.role !='admin' && req.session.role !='talent' ) { %>
           <div class="buttons">
             <a class="btn btn-outline-info" href='http://localhost:1337/user/register'>
@@ -71,11 +67,13 @@
           <% } %>
 
             <% if (req.session.role) { %>
-              <div> Hi, <%= req.session.username %>
-              </div>
+            
+              <li class="nav-item">
+                <a class="nav-link" href="http://localhost:1337/cv/overview">My CV</a>
+              </li>
               <form action="/user/logout" method="POST">
                 <div class="buttons">
-                  <button type="submit" class="btn btn-warning" onclick="logout(this)">
+                  <button type="submit" class="btn btn-secondary btn-sm" style onclick="logout(this)">
                     Log out
                   </button>
                 </div>

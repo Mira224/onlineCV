@@ -26,24 +26,13 @@ module.exports = {
 
             return res.status(401).json('Wrong password');
         }
-        console.log('THere');
-        //reuse existing session
-        // if (!req.session.email) {
-        //     console.log("Enter")
-        //     req.session.username = user.username;
-        //     req.session.userid = user.id;
-        //     req.session.role = user.role;
 
-        //     return res.json(user);
-        // }
-        //start a new session for the new login suer
-        console.log('Here');
         req.session.regenerate(function (err) {
             console.log("create session");
             if (err) return res.serverError(err);
             req.session.email = user.email;
             req.session.username = user.username;
-            req.session.userid = user.id;
+            req.session.id = user.id;
             req.session.role = user.role;
 
             if (req.session.role == 'admin') {
@@ -87,9 +76,18 @@ module.exports = {
         }
         return res.badRequest(error.message);
 
+    },
 
+    overview: async function (req, res) {
+        if (req.method == "GET") return res.view('pages/allcv');
 
+        var user = await User.findOne(req.session.id);
 
+        if (!user) return res.notFound();
+
+        var cvs = await User.find({ id: req.session.id }).populate("userOwnCV");
+
+        return res.view('pages/allcv', { cvs: cvs, user: user })
     },
 
 

@@ -1,33 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
+<link rel="stylesheet" href="/css/dark.css" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- fontawesome css -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="/styles/template/tem-dark.css">
-</head>
+<div class="container">
+    <div class="container text-center text-lg-left">
+        <div class="site-nav">
+            <nav class="navigation">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item"><a class="nav-link" href="#about" title="About"><span
+                                class="menu-title">About</span></a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#education" title="Education"><span
+                                class="menu-title">Education</span></a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#work" title="Work"><span class="menu-title">Work
+                                Experience</span></a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#activity" title="Activity"><span
+                                class="menu-title">Activity Experience</span></a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#skills" title="Skills"><span
+                                class="menu-title">Skills</span></a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#references" title="References"><span
+                                class="menu-title">References</span></a>
+                    </li>
 
-<body>
+                </ul>
+            </nav>
+        </div>
+    </div>
     <div class="page-content">
         <div class="container">
-            <div class="cv-container">
-                <div class="cv-intro">
-                    <div class="cover-bg-image">
-                        <img src="/styles/images/dark-bg.jpg">
+            <div class="shadow-1-strong bg-white my-5" id="intro">
+                <div class="bg-info text-white">
+                    <div class="cover bg-image"><img src="styles/images/dark-bg.jpg" />
+                        <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);backdrop-filter: blur(2px);">
+                            <div class="text-center p-5">
+
+                                <div class="header-bio mt-3">
+                                    <div data-aos="zoom-in" data-aos-delay="0">
+                                        <h2 >
+                                            <%= cv.name%>
+                                        </h2>
+                                        <p><% cv.ps%></p>
+                                    </div>
+                                </div>
+                                <p>Email: <% cv.email%></p>
+                                <p>Mobile: <% cv.mobile%></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-
             </div>
-        </div>
 
+            <div class="shadow-1-strong bg-white my-5 p-5" id="education">
+                <div class="education-section">
+
+                </div>
+            </div>
+            <div class="shadow-1-strong bg-white my-5 p-5" id="work">
+                <div class="work-section">
+
+                </div>
+            </div>
+            <div class="shadow-1-strong bg-white my-5 p-5" id="activity">
+                <div class="activity-section">
+
+                </div>
+            </div>
+
+            <div class="shadow-1-strong bg-white my-5 p-5" id="skills">
+                <div class="skills-section">
+
+                </div>
+            </div>
+            <div class="shadow-1-strong bg-white my-5 p-5" id="reference">
+                <div class="reference-section">
+
+                </div>
+            </div>
+
+
+
+
+        </div>
     </div>
 
-    <button onclick="window.print();">Download cv <i class="fa fa-download"></i></button>
-</body>
 
-</html>
+
+
+
+
+</div>
+
+<button onclick="window.print();">Download cv <i class="fa fa-download"></i></button>
