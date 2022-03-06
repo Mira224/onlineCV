@@ -22,7 +22,7 @@ module.exports.routes = {
   '/': { view: 'pages/homepage' },
   '/tempalte1': { view: 'template/template1' },
   '/tempalte2': { view: 'template/template2' },
-  '/dark': { view: 'template/dark' },
+  '/dark': { view: 'template/template-dark' },
 
   '/guide':{view:'Tips/guide'},
   '/tips':{view:'Tips/tips'},
@@ -52,15 +52,13 @@ module.exports.routes = {
   'GET /cv/overview': 'UserController.overview',
   'POST /cv/overview': 'UserController.overview',
   
-
-
   'GET /:id/cv/:title': 'CVController.cv',
+
   'POST /cv/delete/:id': 'CVController.delete',
 
   // 'GET /cv/update/:id':'CVController.update,',
   // 'POST /cv/update/:id':'CVController.update,',
-  // 'GET /cv/delte/:id':'CVController.delete,',
-  // 'POST /cv/delete/:id':'CVController.delete,',
+
   
 
   // 'GET /cv/:id/createContact': 'CVController.contactCreate',

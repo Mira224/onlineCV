@@ -7,16 +7,38 @@
             <input class="input" type="text" name="title" id="title" required>
         </div>
     </div>
-   
+
     <div class="field">
         <label class="label">Choose template</label>
-
-    </div>
-
-    <div class="field">
         <div class="control">
-            <button class="button is-link" type="submit">Create CV</button>
+            <p>Please select a template:</p>
+
+            <div class="template-box"> <input type="radio" id="template-dark" name="template" value="template-dark">
+                <label for="template-dark">Dark</label><br>
+                <a href="https://en.wikipedia.org/">Preview-dark</a>
+                <div class="box">
+                    <iframe src="https://en.wikipedia.org/" width="500px" height="500px">
+                    </iframe>
+                </div>
+            </div>
+
+
+            <div class="template-box"> <input type="radio" id="template-white" name="template" value="template-white">
+                <label for="template-white">White</label><br>
+                <a href="https://www.jquery.com/">Preview-white</a>
+                <div class="box">
+                    <iframe src="https://www.jquery.com/" width="500px" height="500px">
+                    </iframe>
+                </div>
+            </div>
+
+
         </div>
-    </div>
+
+        <div class="field">
+            <div class="control">
+                <button class="button is-link" type="submit">Create CV</button>
+            </div>
+        </div>
 
 </form>

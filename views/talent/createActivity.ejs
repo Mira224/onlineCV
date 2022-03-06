@@ -4,32 +4,32 @@
     <div class="field">
         <label class="label">Title</label>
         <div class="control">
-            <input class="input" type="text" name="title" id="title" required>
+            <input class="input" type="text" name="title" id="title" value="<%= cv.title%>" required>
         </div>
     </div>
 
     <div class="field">
         <label class="label">Organization</label>
         <div class="control">
-            <input class="input" type="text" name="org" id="org" required>
+            <input class="input" type="text" name="org" id="org" value="<%= cv.org%>" required>
         </div>
     </div>
     <div class="field">
         <label class="label">Start Time</label>
         <div class="control">
-            <input class="input" type="date" name="sTime" id="sTime" required>
+            <input class="input" type="date" name="sTime" id="sTime" value="<%= cv.sTime%>" required>
         </div>
     </div>
     <div class="field">
         <label class="label">End Time</label>
         <div class="control">
-            <input class="input" type="date" name="eTime" id="eTime">
+            <input class="input" type="date" name="eTime" id="eTime" value="<%= cveTime.%>">
         </div>
     </div>
     <div class="field">
         <label class="label">Description</label>
         <div class="control">
-            <textarea class="textarea" placeholder="Please describe the activity" type="text" name="description"
+            <textarea class="textarea" placeholder="Please describe the activity" type="text" name="description" value="<%= cv.description%>"
                 rows="5" required></textarea>
         </div>
     </div>

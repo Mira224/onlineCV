@@ -25,7 +25,7 @@ module.exports.bootstrap = async function () {
   if (await CV.count() == 0) {
     await CV.createEach([
       {
-        title: "Adam's CV", link: '',ps:"I am a front worker.", template: 'template/dark', tel: '12345678', fax: '12345678', education: [
+        title: "Adam's CV", link: '',ps:"I am a front worker.", template: 'template-dark', tel: '12345678', fax: '12345678', education: [
           { school: 'High school', sTime: new Date('2012-09-01'), eTime: new Date('2015-6-30'), description: 'I did well in high school.' },
           { school: 'University', sTime: new Date('2015-09-01'), eTime: new Date('2019-7-31'), description: 'GPA:3.4' },],
         work: [{
