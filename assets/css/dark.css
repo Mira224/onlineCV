@@ -1,4 +1,13 @@
 /* Timeline custom component */
+
+.cover {
+  height: 500px; }
+
+.cover > img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: auto; }
+
 .timeline-card {
     position: relative;
     margin-left: 16px; }

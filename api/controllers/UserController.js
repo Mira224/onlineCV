@@ -90,6 +90,13 @@ module.exports = {
         return res.view('pages/allcv', { cvs: cvs, user: user })
     },
 
+    listUser: async function (req, res){
+
+        var users = await User.find()
+
+        return res.view('admin/alluser', { users: users });
+
+    }
 
 };
 

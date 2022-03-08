@@ -23,9 +23,12 @@ module.exports.routes = {
   '/tempalte1': { view: 'template/template1' },
   '/tempalte2': { view: 'template/template2' },
   '/dark': { view: 'template/template-dark' },
+  '/white': { view: 'template/template-white' },
 
   '/guide':{view:'Tips/guide'},
   '/tips':{view:'Tips/tips'},
+
+  '/admin': 'UserController.listUser',
   '/user/register': 'UserController.register',
   'GET /user': 'UserController.login',
   'GET /user/login': 'UserController.login',

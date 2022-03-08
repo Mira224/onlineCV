@@ -22,6 +22,7 @@ module.exports = {
       type: 'string'
     },
     ps:{type:'string'},
+   // avatar:{},
     email: { type: 'string' },
     mobile: { type: 'string' },
     education: {
