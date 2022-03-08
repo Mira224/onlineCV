@@ -16,6 +16,9 @@ module.exports = {
       console.log("not exist.");
       return res.notFound();
     }
+
+    await User.addToCollection(req.session.userid, 'userOwnCV').members(cv.id)
+
     console.log(cv);
     return res.view('talent/createContent', { cv: cv });
   },
@@ -54,19 +57,29 @@ module.exports = {
       return res.view('talent/createEdu', { cv: thatCV });
     } else {
 
-      var json = new JSONObject();
+      let skills = JSON.stringify(req.body)
 
-      json.put("school", req.params.school);
-      json.put("sTime", req.params.sTime);
-      json.put("eTime", req.params.eTime);
-      json.put('description', req.params.description);
-      message = json.toString();
-      console.log(message);
+      // var json = new JSONObject();
+
+      // json.put("school", req.params.school);
+      // json.put("sTime", req.params.sTime);
+      // json.put("eTime", req.params.eTime);
+      // json.put('description', req.params.description);
+      // message = json.toString();
+      console.log(skills);
 
       var thatCV = await CV.findOne(req.params.id);
       if (!thatCV) return res.status(404).json("CV not found.");
-      await thatCV.education.push(json);
-      console.log(hatCV.education);
+
+      if (!thatCV.education) {
+        thatCV.education = [req.body]
+      } else {
+        thatCV.education.push(req.body)
+      }
+
+      await CV.updateOne(thatCV).set({education:thatCV.education})
+      // await thatCV.education.push(json);
+      // console.log(hatCV.education);
 
       return res.view('talent/createContent', { cv: thatCV });
     }
@@ -142,9 +155,12 @@ module.exports = {
     else {
       var json = new JSONObject();
 
-      json.put("content", req.params.content);
-      json.put('level', req.params.level);
-      message = json.toString();
+
+      let skills = JSON.stringify(req.body)
+
+      // json.put("content", req.params.content);
+      // json.put('level', req.params.level);
+      // message = json.toString();
       console.log(message);
 
       var thatCV = await CV.findOne(req.params.id);

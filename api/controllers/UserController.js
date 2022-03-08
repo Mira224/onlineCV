@@ -17,8 +17,7 @@ module.exports = {
         // console.log(req.body.password);
 
         if (!user) {
-
-            return res.res.status(401).json('User not found');
+            return res.status(401).json('User not found');
         }
 
         var match = await bcrypt.compare(req.body.password, user.password);
@@ -32,7 +31,7 @@ module.exports = {
             if (err) return res.serverError(err);
             req.session.email = user.email;
             req.session.username = user.username;
-            req.session.id = user.id;
+            req.session.userid = user.id;
             req.session.role = user.role;
 
             if (req.session.role == 'admin') {
