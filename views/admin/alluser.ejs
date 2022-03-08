@@ -1,0 +1,22 @@
+<div class="container">
+    <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+
+        <% cvs.forEach( function(cv) { %>
+
+            <tr>
+                <td>
+                    <%= cv.title %>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" a="http://localhost:1337/cv/<%= cv.id %>/delete">Delete</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-info" a="http://localhost:1337/cv/<%= cv.id %>/update">Update</button>
+                </td>
+            </tr>
+
+            <% }); %>
+
+    </table>
+
+</div>

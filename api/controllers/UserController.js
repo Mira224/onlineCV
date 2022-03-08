@@ -80,13 +80,12 @@ module.exports = {
     overview: async function (req, res) {
         if (req.method == "GET") return res.view('pages/allcv');
 
-        var user = await User.findOne(req.session.id);
+        var user = await User.findOne(req.session.userid).populate("userOwnCV");
 
         if (!user) return res.notFound();
 
-        var cvs = await User.find({ id: req.session.id }).populate("userOwnCV");
 
-        return res.view('pages/allcv', { cvs: cvs, user: user })
+        return res.view('pages/allcv', { cvs: user.userOwnCV})
     },
 
     listUser: async function (req, res){

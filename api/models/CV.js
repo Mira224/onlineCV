@@ -62,43 +62,7 @@ module.exports = {
     //   collection: 'User',
     //   via: 'userOwnCV',
     // },
-    cvHasEdu: {
-      collection: 'Edu',
-      via: 'eduBelongCV'
-    },
-    cvHasIntern: {
-      collection: 'Intern',
-      via: 'internBelongCV'
-    },
-    cvHasActivity: {
-      collection: 'Activity',
-      via: 'activityBelongCV',
-    },
-    cvHasProj: {
-      collection: 'Proj',
-      via: 'projBelongCV'
-    },
-    cvHasSkill: {
-      collection: 'Skill',
-      via: 'skillBelongCV'
-    },
-    cvHasWork: {
-      collection: 'Work',
-      via: 'workBelongCV',
-    },
-    cvHasMultimedia: {
-      collection: 'Multimedia',
-      via: 'multimediaBelongCV',
-    },
-    cvHasContact: {
-      collection: 'Contact',
-      via: 'contactBelongCV',
-    },
-    cvHasRef: {
-      collection: 'Reference',
-      via: 'refBelongCV',
-    },
-
+    
 
   },
 

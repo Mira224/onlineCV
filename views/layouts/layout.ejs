@@ -51,11 +51,9 @@
       <li class="nav-item">
         <a class="nav-link" href="http://localhost:1337/guide">User Guide</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="http://localhost:1337/cv/create">Create CV</a>
-      </li>
+     
 
-        <% if (req.session.role !='talent' & req.session.role !='admin' ) { %>
+        <% if (req.session.role !='talent' && req.session.role !='admin' ) { %>
           <div class="buttons">
             <a class="btn btn-outline-info" href='http://localhost:1337/user/register'>
               <strong>Register</strong>
@@ -66,14 +64,17 @@
           </div>
           <% } %>
 
-          <% if (req.session.role ='talent' ) { %>
+          <% if (req.session.role =='talent' ) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="http://localhost:1337/cv/create">Create CV</a>
+            </li>
           <li class="nav-item">
             <a class="nav-link" href="http://localhost:1337/cv/overview">My CV</a>
           </li>
 
           <% } %>
 
-          <% if(req.session.role ='admin') {%>
+          <% if(req.session.role =='admin') {%>
           
             <li class="nav-item">
               <a class="nav-link" href="http://localhost:1337/admin">Admin</a>

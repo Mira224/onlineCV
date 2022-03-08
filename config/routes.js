@@ -37,6 +37,11 @@ module.exports.routes = {
 
   'GET /cv/create': 'CVController.createCV',
   'POST /cv/create': 'CVController.createCV',
+
+  'POST /cv/:id/delete': 'CVController.deletecv',
+
+  // 'GET /cv/:id/update':'CVController.updatecv,',
+  // 'POST /cv/:id/update':'CVController.updatecv,',
   
 
   'GET /cv/:id/addContact': 'CVController.addContact',
@@ -51,41 +56,19 @@ module.exports.routes = {
   'POST /cv/:id/addActivity': 'CVController.addActivity',
   'GET /cv/:id/addRef': 'CVController.addRef',
   'POST /cv/:id/addRef': 'CVController.addRef',
+  'GET /cv/:id/chooseTemplate': 'CVController.chooseTemplate',
+  'POST /cv/:id/chooseTemplate': 'CVController.chooseTemplate',
+  
+  
  
   'GET /cv/overview': 'UserController.overview',
   'POST /cv/overview': 'UserController.overview',
-  
   'GET /:id/cv/:title': 'CVController.cv',
 
-  'POST /cv/delete/:id': 'CVController.delete',
 
-  // 'GET /cv/update/:id':'CVController.update,',
-  // 'POST /cv/update/:id':'CVController.update,',
+
 
   
-
-  // 'GET /cv/:id/createContact': 'CVController.contactCreate',
-  // 'POST /cv/:id/createContact': 'CVController.contactCreate',
-  // 'GET /cv/:id/createContact/:fk': 'CVController.contactAsso',
-  // 'POST /cv/:id/createContact/:fk': 'CVController.contactAsso',
-  
-  // 'GET /cv/:id/createContact': 'ContactController.contactCreate',
-  // 'POST /cv/:id/createContact': 'ContactController.contactCreate',
-  // 'GET /cv/:id/createContact/:fk': 'ContactController.contactAsso',
-  // 'POST /cv/:id/createContact/:fk': 'ContactController.contactAsso',
-  
-  // 'GET /contact/create': 'ContactController.create',
-  // 'POST /contact/create': 'ContactController.create',
-  
-  // 'GET /activity/create': 'ActivityController.create',
-  // 'POST /activity/create': 'ActivityController.create',
-  // 'GET /activity/update/:id': 'ActivityController.update',
-  // 'POST /activity/update/:id': 'ActivityController.update',
-
-  // 'GET /edu/create': 'EduController.create',
-  // 'POST /edu/create': 'EduController.create',
-  // 'GET /edu/update/:id': 'EduController.update',
-  // 'POST /edu/update/:id': 'EduController.update',
 
 
   /***************************************************************************

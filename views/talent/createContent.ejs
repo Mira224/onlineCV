@@ -1,46 +1,103 @@
 <div class="container">
-    <h2>Add content of each section</h2>
-    <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+        <h2>Add content of each section</h2>
+        <div class="row justify-content-around">
+                <div class="col-12 col-sm-4">
+                        <div class="card">
+                                <div class="card-body">
+                                        <h5 class="card-title">Contact</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Contact Info</h6>
+                                        <p class="card-text">Add contact information for others contact you.</p>
+                                        <a href="http://localhost:1337/cv/<%= cv.id %>/addContact"
+                                                class="card-link">Create Contact</a>
+                                </div>
+                        </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                        <div class="card">
+                                <div class="card-body">
+                                        <h5 class="card-title">Education</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Education History</h6>
+                                        <p class="card-text">Introduce your education experience.</p>
+                                        <a href="http://localhost:1337/cv/<%= cv.id %>/addEdu" class="card-link">Create
+                                                Education</a>
 
-        <tr>
-            <td><a type="button" href="http://localhost:1337/cv/<%= cv.id %>/addContact"
-                    class="btn btn-outline-info">Contact</a>
-            </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><a type="button" href="http://localhost:1337/cv/<%= cv.id %>/addEdu"
-                    class="btn btn-outline-info">Education</a></td>
-            <td><a type="button" href="http://localhost:1337/cv/<%= cv.id %>/addEdu" class="btn btn-outline-warning">
-                    Add Education</a></td>
-            </td>
-        </tr>
-        <tr>
-            <td> <a type="button" href="http://localhost:1337/cv/<%= cv.id %>/addWork"
-                    class="btn btn-outline-info">Work</a></td>
-            <td> <a type="button" href="http://localhost:1337/cv/<%= cv.id %>/addWork"
-                    class="btn btn-outline-warning">Add Work</a></td>
-        </tr>
-        <tr>
-            <td> <a type="button" href="http://localhost:1337/cv/<%= cv.id %>/addSkill"
-                    class="btn btn-outline-info">Skill</a></td>
-            <td> <a type="button" href="http://localhost:1337/cv/<%= cv.id %>/addSkill"
-                    class="btn btn-outline-warning">Add Skill</a></td>
-        </tr>
-        <tr>
-            <td><a type="button" href="http://localhost:1337/cv/<%= cv.id %>/addActivity"
-                    class="btn btn-outline-info">Activity</a></td>
-            <td><a type="button" href="http://localhost:1337/cv/<%= cv.id %>/addActivity"
-                    class="btn btn-outline-warning">Add Activity</a></td>
-        </tr>
-        <tr>
-            <td> <a type="button" href="http://localhost:1337/cv/<%= cv.id %>/addRef"
-                    class="btn btn-outline-info">Reference</a></td>
-            <td> <a type="button" href="http://localhost:1337/cv/<%= cv.id %>/addRef"
-                    class="btn btn-outline-warning">Add Reference</a></td>
-        </tr>
+                                </div>
+                        </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                        <div class="card">
+                                <div class="card-body">
+                                        <h5 class="card-title">Work</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Work History</h6>
+                                        <p class="card-text">Introduce your education experience.</p>
+                                        <a href="http://localhost:1337/cv/<%= cv.id %>/addWork" class="card-link">Create
+                                                Work</a>
+
+                                </div>
+                        </div>
+                </div>
+
+                <div class="col-12 col-sm-4">
+                        <div class="card">
+                                <div class="card-body">
+                                        <h5 class="card-title">Skill</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Skills</h6>
+                                        <p class="card-text">Introduce what you can do.</p>
+                                        <a href="http://localhost:1337/cv/<%= cv.id %>/addSkill"
+                                                class="card-link">Create skills</a>
+
+                                </div>
+                        </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                        <div class="card">
+                                <div class="card-body">
+                                        <h5 class="card-title">Activity</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Activity Experience</h6>
+                                        <p class="card-text">Introduce what you have done.</p>
+                                        <a href="http://localhost:1337/cv/<%= cv.id %>/addActivity"
+                                                class="card-link">Card link</a>
+
+                                </div>
+                        </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                        <div class="card">
+                                <div class="card-body">
+                                        <h5 class="card-title">Reference</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Recommendation</h6>
+                                        <p class="card-text">How do other people evaluate you？</p>
+                                        <a href="http://localhost:1337/cv/<%= cv.id %>/addRef" class="card-link">Card
+                                                link</a>
+
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <br>
+        <form action="/cv/<%= cv.id %>/chooseTemplate" method="post">
+                <label class="label">Choose template</label>
+                <div class="control">
+                        <p>Please select a template:</p>
+                        <div class="col-4 col-12-small">
+                                <input type="radio" id="template-dark" name="template" value="template-dark">
+                                <label for="template-dark">Dark</label>
+                                <a href="http://localhost:1337/dark">Preview-dark</a>
+                        </div>
+                </div>
 
 
+                <div class="col-4 col-12-small">
+                        <input type="radio" id="template-white" name="template" value="template-white">
+                        <label for="template-white">White</label>
+                        <a href="https://www.jquery.com/">Preview-white</a>
 
-    </table>
+                </div>
+                <div class="field">
+                        <div class="control">
+                                <button class="button is-link" type="submit">Confirm</button>
+                        </div>
+                </div>
+        </form>
+
 </div>

@@ -57,7 +57,7 @@ module.exports = {
       return res.view('talent/createEdu', { cv: thatCV });
     } else {
 
-      let skills = JSON.stringify(req.body)
+      let edu = JSON.stringify(req.body)
 
       // var json = new JSONObject();
 
@@ -66,7 +66,7 @@ module.exports = {
       // json.put("eTime", req.params.eTime);
       // json.put('description', req.params.description);
       // message = json.toString();
-      console.log(skills);
+      console.log(edu);
 
       var thatCV = await CV.findOne(req.params.id);
       if (!thatCV) return res.status(404).json("CV not found.");
@@ -200,6 +200,24 @@ module.exports = {
     }
 
   },
+  chooseTemplate: async function (req, res) {
+    if (req.method == "GET") {
+
+      var thatCV = await CV.findOne(req.params.id);
+
+      if (!thatCV) return res.notFound();
+
+      return res.view('talent/createContent', { cv: thatCV });
+      
+  } else {
+  
+      var updatedCV = await CV.updateOne(req.params.id).set(req.body);
+
+      if (!updatedCV) return res.notFound();
+
+      return res.view('talent/createContent', { cv: thatCV });
+  }
+  },
 
 
   /*list all the parts associated with cv*/
@@ -211,14 +229,18 @@ module.exports = {
 
 
 
-  delete: async function (req, res) {
+  deletecv: async function (req, res) {
 
-    var deletedCV = await Person.destroyOne(req.params.id);
+    var deletedCV = await CV.destroyOne(req.params.id);
 
     if (!deletedCV) return res.notFound();
 
     return res.redirct('/cv/overview');
   },
+
+  // updatecv: async function (req, res) {
+  //   return res.redirct('/cv/overview');
+  // },
 
 
 
