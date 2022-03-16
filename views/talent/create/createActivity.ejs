@@ -1,0 +1,75 @@
+<div class="row justify-content-between">
+    <div class="col-6">
+        <h2 id="content">Activity Experience</h2>
+    </div>
+    <div class="col-6">
+        <input type="button" value="addone" onclick="add()">
+    </div>
+</div>
+<form action="/cv/<%= cv.id %>/addActivity" method="post">
+    <div class="col-9">
+        <div class="activityFields" id="activityFields">
+            <div class="field">
+                <label class="label">Title</label>
+                <div class="control">
+                    <input class="input" type="text" name="title" id="title" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Organization</label>
+                <div class="control">
+                    <input class="input" type="text" name="org" id="org" required>
+                </div>
+            </div>
+            <div class="row justify-content-start">
+                <div class="col-4">
+                    <label class="label">Start Time</label>
+                    <div class="control">
+                        <input class="input" type="date" name="sTime" id="sTime" required>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label class="label">End Time</label>
+                    <div class="control">
+                        <input class="input" type="date" name="eTime" id="eTime" required>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Description</label>
+                <div class="control">
+                    <textarea class="textarea" placeholder="Please describe the activity" type="text" name="description"
+                        rows="5" required></textarea>
+                </div>
+            </div>
+            <br>
+        </div>
+        <div id="activityFields_placeholder">
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="control">
+                    <button class="button is-link" type="submit">Save</button>
+                </div>
+            </div>
+
+            <div class="col-md-4 ms-auto">
+                <div class="control">
+                    <a class="button is-link" href="http://localhost:1337/cv/<%= cv.id %>/addSkill">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    var addone = "title:" + document.getElementById("title") + "org:" + document.getElementById("org") + "sTime:" + document.getElementById("sTime") + "eTime:" + document.getElementById("eTime:") + "description:" + document.getElementById("description");
+    function add() {
+        let fields = document.getElementById('activityFields');
+        let activityFields_placeholder = document.getElementById('activityFields_placeholder');
+        //$('.eduField').append(addone);
+        activityFields_placeholder.innerHTML += fields.innerHTML;
+    }
+</script>

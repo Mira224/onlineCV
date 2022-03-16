@@ -1,35 +1,66 @@
-<div class="content user-register w-100">
-    <h2 class="main-heading1">Registration</h2>
-    <form id="form-register" class="ajax-with-preview" action="/user/register" method="POST" onsubmit="return valid()">
+<style type="text/css">
+    #passStrength {
+        height: 6px;
+        width: 120px;
+        border: 1px solid #ccc;
+        padding: 2px;
+    }
+
+    .strengthLv1 {
+        background: red;
+        height: 6px;
+        width: 40px;
+    }
+
+    .strengthLv2 {
+        background: orange;
+        height: 6px;
+        width: 80px;
+    }
+
+    .strengthLv3 {
+        background: green;
+        height: 6px;
+        width: 120px;
+    }
+</style>
+<div class="col-6 col-12-xsmall">
+    <div id="content">
+        <h2>Registration</h2>
+    </div>
+    <form id="form-register" class="row gtr-uniform" action="/user/register" method="POST" onsubmit="return valid()">
         <section>
-            <h4 class="side-heading2">Account information</h4>
+            <h4>Account information</h4>
             <div class="container-fluid">
                 <div class="row">
-                
-                        <label class="flex-shrink-0 col-form-label">Username: </label>
-                        <input class="form-control-reg" type="text" name="username" required>
-                  
-                   
-                        <label class="flex-shrink-0 col-form-label">Email: </label>
-                        <input class="form-control-reg" type="email" name="email" required>
-                     
-                        <label class="flex-shrink-0 col-form-label">Password: </label>
-                        <input id="pw" class="form-control-reg" type="password" name="password" required>
-                 
-                   
-                        <label class="flex-shrink-0 col-form-label">Confirm password: </label>
-                        <input id="confirmpw" class="form-control-reg" type="password" name="ConfirmPassword"
-                            required oninput="this.setCustomValidity('')">
-                   
 
-                   
-                        <label class="flex-shrink-0 col-form-label">Mobile: </label>
-                        <input class="form-control-reg" type="text" name="mobile" size="16" required>
-                    
+                    <label class="flex-shrink-0 col-form-label">Username: </label>
+                    <input class="form-control-reg" type="text" name="username" required>
+
+
+                    <label class="flex-shrink-0 col-form-label">Email: </label>
+                    <input class="form-control-reg" type="email" name="email" required>
+
+                    <label class="flex-shrink-0 col-form-label">Password: </label>
+        <input id="pw" oninput="checkStrength(this)" class="form-control-reg" type="password" name="password" required>
+
+                    <div class="pass-wrap">
+                        <em>Password score：</em>
+                        <div id="passStrength"></div>
+                    </div>
+
+                    <label class="flex-shrink-0 col-form-label">Confirm password: </label>
+                    <input id="confirmpw" class="form-control-reg" type="password" name="ConfirmPassword" required
+                >
+
+
+
+                    <label class="flex-shrink-0 col-form-label">Mobile: </label>
+                    <input class="form-control-reg" type="text" name="mobile" size="16" required>
+
 
                     <div class="col-12 col-lg-6 form-group" style="margin:10px">
-
-                        <button id="submit" class="btn btn-danger" type="submit">Submit</button>
+                        <button id="submit" class="button primary" type="submit">Submit</button>
                     </div>
                 </div>
             </div>
@@ -50,7 +81,44 @@
         return true;
     };
 
-    (function () {
-
-    })();
+</script>
+<script>
+    function PasswordStrength(passwordID, strengthID) {
+        this.init(strengthID);
+        var _this = this;
+        document.getElementById(passwordID).onkeyup = function () {
+            _this.checkStrength(this.value);
+        }
+    };
+    PasswordStrength.prototype.init = function (strengthID) {
+        var id = document.getElementById(strengthID);
+        var div = document.createElement('div');
+        var strong = document.createElement('strong');
+        this.oStrength = id.appendChild(div);
+        this.oStrengthTxt = id.parentNode.appendChild(strong);
+    };
+    PasswordStrength.prototype.checkStrength = function (val) {
+        var aLvTxt = ['', 'Low', 'Medium', 'High'];
+        var lv = 0;
+        if (val.match(/[a-z]/g)) { lv++; }
+        if (val.match(/[0-9]/g)) { lv++; }
+        if (val.match(/(.[^a-z0-9])/g)) { lv++; }
+        if (val.length < 6) { lv = 0; }
+        if (lv > 3) { lv = 3; }
+        this.oStrength.className = 'strengthLv' + lv;
+        this.oStrengthTxt.innerHTML = aLvTxt[lv];
+    };
+    function checkStrength(input) {
+        input.setCustomValidity('')
+        let display = document.getElementById('passStrength')
+        var lv = 0;
+        let val = input.value;
+        if (val.match(/[a-z]/g)) { lv++; }
+        if (val.match(/[0-9]/g)) { lv++; }
+        if (val.match(/(.[^a-z0-9])/g)) { lv++; }
+        if (val.length < 6) { lv = 0; }
+        if (lv > 3) { lv = 3; }
+        display.className = 'strengthLv' + lv;
+        //this.oStrengthTxt.innerHTML = aLvTxt[lv];
+    }
 </script>

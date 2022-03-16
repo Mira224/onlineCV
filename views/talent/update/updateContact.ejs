@@ -1,5 +1,5 @@
 <!--create.ejs-->
-<form action="/cv/<%= cv.id %>/addContact" method="post">
+<form action="/cv/<%= cv.id %>/updateContact" method="post">
 
     <div class="field">
         <label class="label">Name</label>
@@ -23,14 +23,22 @@
     <div class="field">
         <label class="label">Objective</label>
         <div class="control">
-            <textarea class="textarea" placeholder="Comment" type="text" name="ps" rows="3" value="" required><%= cv.ps%></textarea>
+            <textarea class="textarea" placeholder="Comment" type="text" name="ps" rows="3" value=""
+                required><%= cv.ps%></textarea>
         </div>
     </div>
-    
+
     <div class="field">
         <div class="control">
             <button class="button is-link" type="submit">Save</button>
         </div>
     </div>
 
+
 </form>
+
+<div class="field">
+    <div class="control">
+        <a class="button is-link" href="http://localhost:1337/cv/<%= cv.id %>/addEdu">Next</a>
+    </div>
+</div>

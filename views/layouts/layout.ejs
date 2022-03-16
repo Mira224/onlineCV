@@ -37,7 +37,6 @@
     -->
 
       <!--STYLES-->
-      <link rel="stylesheet" href="/styles/importer.css">
       <link rel="stylesheet" href="/styles/main.css">
       <!--STYLES END-->
 </head>
@@ -55,10 +54,10 @@
 
         <% if (req.session.role !='talent' && req.session.role !='admin' ) { %>
           <div class="buttons">
-            <a class="btn btn-outline-info" href='http://localhost:1337/user/register'>
-              <strong>Register</strong>
+            <a class="button small" href='http://localhost:1337/user/register'>
+            Register
             </a>
-            <a class="btn btn-outline-primary" href='http://localhost:1337/user/login'>
+            <a class="button small" href='http://localhost:1337/user/login'>
               Log in
             </a>
           </div>
@@ -85,7 +84,7 @@
            
               <form action="/user/logout" method="POST">
                 <div class="buttons">
-                  <button type="submit" class="btn btn-secondary btn-sm" style onclick="logout(this)">
+                  <button type="submit" class="button small" style onclick="logout(this)">
                     Log out
                   </button>
                 </div>

@@ -1,0 +1,92 @@
+<form action="/cv/<%= cv.id %>/addEdu" method="post">
+    
+    <div id="eduFields" class="eduField" style="display:none">
+        <div class="field">
+            <label class="label">School</label>
+            <div class="control">
+                <input class="input" type="text" name="school" id="school" required>
+            </div>
+        </div>
+
+
+        <div class="field">
+            <label class="label">Start Time</label>
+            <div class="control">
+                <input class="input" type="date" name="sTime" id="sTime" required>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">End Time</label>
+            <div class="control">
+                <input class="input" type="date" name="eTime" id="eTime" required>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Description</label>
+            <div class="control">
+                <textarea class="textarea" placeholder="Please describe the activity" type="text" name="description"
+                    id="description" rows="5" required></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div id="eduFields_placeholder">
+<% edus.forEach( function(edu) { %>
+<div class="fields-wrapper">
+
+    <div class="field">
+        <label class="label">School</label>
+        <div class="control">
+            <input class="input" type="text" name="school" id="school" value="<%= edu.school %>" required>
+        </div>
+    </div>
+
+
+    <div class="field">
+        <label class="label">Start Time</label>
+        <div class="control">
+            <input class="input" type="date" name="sTime" id="sTime"  value="<%= edu.sTime %>" required>
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">End Time</label>
+        <div class="control">
+            <input class="input" type="date" name="eTime" id="eTime" value="<%= edu.eTime %>" required>
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Description</label>
+        <div class="control">
+            <textarea class="textarea" placeholder="Please describe the activity" type="text" name="description"
+                id="description" rows="5" required><%= edu.description %></textarea>
+        </div>
+    </div>
+
+    <button type="button" onclick="this.parentNode.remove()">remove</button>
+</div>
+<% }); %>
+    </div>
+    
+
+        <a type="button" href="http://localhost:1337/cv/<%= cv.id %>/addEdu" class="btn btn-outline-warning">
+            Add Education</a>
+
+        <div class="field">
+            <div class="control">
+                <button class="button is-link" type="submit">Save</button>
+            </div>
+        </div>
+
+
+        <input type="button" value="addone" onclick="add()">
+
+</form>
+<script>
+var addone = "school:" + document.getElementById("school") + "sTime:" + document.getElementById("sTime") + "eTime:" + document.getElementById("eTime:") + "description:" + document.getElementById("description");
+function add() {
+    let fields = document.getElementById('eduFields');
+    let eduFields_placeholder = document.getElementById('eduFields_placeholder');
+    //$('.eduField').append(addone);
+    eduFields_placeholder.innerHTML += fields.innerHTML; s
+}
+</script>

@@ -25,8 +25,8 @@ module.exports.routes = {
   '/dark': { view: 'template/template-dark' },
   '/white': { view: 'template/template-white' },
 
-  '/guide':{view:'Tips/guide'},
-  '/tips':{view:'Tips/tips'},
+  '/guide': { view: 'Tips/guide' },
+  '/tips': { view: 'Tips/tips' },
 
   '/admin': 'UserController.listUser',
   '/user/register': 'UserController.register',
@@ -42,8 +42,13 @@ module.exports.routes = {
 
   // 'GET /cv/:id/update':'CVController.updatecv,',
   // 'POST /cv/:id/update':'CVController.updatecv,',
-  
 
+
+  'GET /cv/:id/updateEdu':'CVController.updateEdu',
+  'POST /cv/:id/updateEdu':'CVController.updateEdu',
+//CV create content
+  'GET /cv/:id/content': 'CVController.CVcontentManagement',
+  'POST /cv/:id/content': 'CVController.CVcontentManagement',
   'GET /cv/:id/addContact': 'CVController.addContact',
   'POST /cv/:id/addContact': 'CVController.addContact',
   'GET /cv/:id/addEdu': 'CVController.addEdu',
@@ -58,17 +63,43 @@ module.exports.routes = {
   'POST /cv/:id/addRef': 'CVController.addRef',
   'GET /cv/:id/chooseTemplate': 'CVController.chooseTemplate',
   'POST /cv/:id/chooseTemplate': 'CVController.chooseTemplate',
-  
-  
- 
-  'GET /cv/overview': 'UserController.overview',
-  'POST /cv/overview': 'UserController.overview',
+
+//CV Update content
+'GET /cv/:id/updateContact': 'CVController.updateContact',
+'POST /cv/:id/updateContact': 'CVController.updateContact',
+'GET /cv/:id/updateEdu': 'CVController.updateEdu',
+'POST /cv/:id/updateEdu': 'CVController.updateEdu',
+'GET /cv/:id/updateWork': 'CVController.updateWork',
+'POST /cv/:id/updateWork': 'CVController.updateWork',
+'GET /cv/:id/updateSkill': 'CVController.updateSkill',
+'POST /cv/:id/updateSkill': 'CVController.updateSkill',
+'GET /cv/:id/updateActivity': 'CVController.updateActivity',
+'POST /cv/:id/updateActivity': 'CVController.updateActivity',
+'GET /cv/:id/updateRef': 'CVController.updateRef',
+'POST /cv/:id/updateRef': 'CVController.updateRef',
+
+
+  'GET /cv/overview': 'CVController.overview',
+  'POST /cv/overview': 'CVController.overview',
   'GET /:id/cv/:title': 'CVController.cv',
 
 
+  'GET /admin/':{ view: 'pages/adminCentre' },
+  'GET /admin/alluser':'UserController.listUser',
+  'POST /admin/alluser':'UserController.listUser',
+  // 'GET /admin/searchUser':'UserController.searchUser',
+  // 'POST /admin/searchUser':'UserController.searchUser',
+  'GET /admin/paginate':'UserController.paginate',
+ 
+  'POST /admin/allusers':'UserController.listUser',
+  'POST /admin/:id/delete':'UserController.deleteUser',
 
 
-  
+
+
+
+
+
 
 
   /***************************************************************************

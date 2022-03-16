@@ -1,35 +1,31 @@
-<div class="content user-login w-100">
-  
-  
-  <form action="/user/login" method="POST" onsubmit="submitForm(this);return false"
-    data-alert200="Successfully login" data-alert401="Wrong email or password, please input again."
+<div class="main">
+  <form action="/user/login" method="POST" onsubmit="submitForm(this);return false" data-alert200="Successfully login"
+    data-alert401="Wrong email or password, please input again."
     data-callback200="location.assign(new URLSearchParams(window.location.search).get('r') || '/user');">
-    <div class="login-form">
-      <div class="field">
-      <h5 class="main-heading1">User Login</h5>
-        <p class="exampleFormControlInput1">
+    <div>
+      <div class="col-6 col-12-xsmall">
+        <h5 class="main-heading1">User Login</h5>
+        <div class="exampleFormControlInput1">
           <input class="input form-control" type="email" placeholder="Email" name="email" id="email" required>
           <span class="icon is-small is-left">
             <i class="fas fa-user"></i>
           </span>
-        </p>
-      </div>
+        </div>
 
-      <div class="field">
-        <p class="exampleFormControlInput1">
-          <input class="input form-control" type="password" placeholder="Password" name="password" id="password" required>
+        <div class="exampleFormControlInput1">
+          <input class="input form-control" type="password" placeholder="Password" name="password" id="password"
+            required>
           <span class="icon is-small is-left">
             <i class="fas fa-lock"></i>
           </span>
-        </p>
-      </div>
-      <div class="field">
-    
-          <button class="btn-control" type="submit">
+        </div>
+        <div class="col-12 col-lg-6 form-group" >
+          <button class="button" type="submit">
             Login
           </button>
-      
+        </div>
       </div>
+
     </div>
   </form>
 

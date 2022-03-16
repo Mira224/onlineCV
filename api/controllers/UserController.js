@@ -77,24 +77,77 @@ module.exports = {
 
     },
 
-    overview: async function (req, res) {
-        if (req.method == "GET") return res.view('pages/allcv');
+    listUser: async function (req, res) {
 
-        var user = await User.findOne(req.session.userid).populate("userOwnCV");
+        var whereClause = {};
 
-        if (!user) return res.notFound();
+        if (req.query.username) whereClause.username = { contains: req.query.username };
 
+        var email = parseInt(req.query.email);
+        if (req.query.email) whereClause.email = email;
 
-        return res.view('pages/allcv', { cvs: user.userOwnCV})
-    },
+        if (req.wantsJSON) {
+            var limit = Math.max(req.query.limit, 2) || 2;
+            var offset = Math.max(req.query.offset, 0) || 0;
 
-    listUser: async function (req, res){
+            var thoseUsers = await User.find({
+                where: whereClause,
+                sort: 'email'
+            });
+
+            var count = await User.find({
+                where: whereClause,
+                limit: limit,
+                skip: offset,
+            });
+            return res.json({thoseUsers,count});
+            
+
+        }else{
+
+            var thoseUsers = await User.find({
+                where: whereClause,
+                sort: 'email'
+            });
+            var count = await User.find({
+                where: whereClause,
+            });
+
+            return res.view('admin/alluser', { users: thoseUsers,count:count});
+
+        }
+
+       
+
+        
 
         var users = await User.find()
 
         return res.view('admin/alluser', { users: users });
 
-    }
+    },
+    deleteUser: async function (req, res) {
+        var deletedUser = await User.destroyOne(req.params.id);
+
+        if (!deletedUser) return res.notFound();
+
+        return res.staus(200).redirect('/admin/alluser')
+    },
+
+    paginate: async function (req, res) {
+
+        var limit = Math.max(req.query.limit, 2) || 2;
+        var offset = Math.max(req.query.offset, 0) || 0;
+
+        var somePersons = await Person.find({
+            limit: limit,
+            skip: offset
+        });
+
+        var count = await Person.count();
+
+        return res.view('person/paginate', { persons: somePersons, numOfRecords: count });
+    },
 
 };
 
