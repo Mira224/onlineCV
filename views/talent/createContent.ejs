@@ -1,10 +1,23 @@
 <div class="container">
-        <h2>View content of each section</h2>
+        <div class="row justify-content-between">
+                <div class="col-4">
+                        <h2>View content of each section</h2>
+                </div>
+                <div class="col-4">
+                        <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch"
+                                        id="flexSwitchCheckChecked" checked>
+                                <label class="form-check-label" for="flexSwitchCheckChecked">Public
+                                        </label>
+                        </div>
+                </div>
+        </div>
+
         <div class="row justify-content-around">
-                <div class="col-12 col-sm-4">
+                <div class="col-6">
                         <div class="card">
                                 <div class="card-body">
-                                        <h5 class="card-title">Contact</h5>
+                                        <h3 class="card-title">Contact</h3>
                                         <h6 class="card-subtitle mb-2 text-muted">Contact Info</h6>
                                         <p class="card-text">Add contact information for others contact you.</p>
                                         <a href="http://localhost:1337/cv/<%= cv.id %>/updateContact"
@@ -12,10 +25,10 @@
                                 </div>
                         </div>
                 </div>
-                <div class="col-12 col-sm-4">
+                <div class="col-6">
                         <div class="card">
                                 <div class="card-body">
-                                        <h5 class="card-title">Education</h5>
+                                        <h3 class="card-title">Education</h3>
                                         <h6 class="card-subtitle mb-2 text-muted">Education History</h6>
                                         <p class="card-text">Introduce your education experience.</p>
                                         <a href="http://localhost:1337/cv/<%= cv.id %>/updateEdu" class="card-link">View
@@ -24,23 +37,24 @@
                                 </div>
                         </div>
                 </div>
-                <div class="col-12 col-sm-4">
+                <div class="col-6">
                         <div class="card">
                                 <div class="card-body">
-                                        <h5 class="card-title">Work</h5>
+                                        <h3 class="card-title">Work</h3>
                                         <h6 class="card-subtitle mb-2 text-muted">Work History</h6>
                                         <p class="card-text">Introduce your education experience.</p>
-                                        <a href="http://localhost:1337/cv/<%= cv.id %>/updateWork" class="card-link">View
+                                        <a href="http://localhost:1337/cv/<%= cv.id %>/updateWork"
+                                                class="card-link">View
                                                 Work</a>
 
                                 </div>
                         </div>
                 </div>
 
-                <div class="col-12 col-sm-4">
+                <div class="col-6">
                         <div class="card">
                                 <div class="card-body">
-                                        <h5 class="card-title">Skill</h5>
+                                        <h3 class="card-title">Skill</h3>
                                         <h6 class="card-subtitle mb-2 text-muted">Skills</h6>
                                         <p class="card-text">Introduce what you can do.</p>
                                         <a href="http://localhost:1337/cv/<%= cv.id %>/updateSkill"
@@ -49,10 +63,10 @@
                                 </div>
                         </div>
                 </div>
-                <div class="col-12 col-sm-4">
+                <div class="col-6">
                         <div class="card">
                                 <div class="card-body">
-                                        <h5 class="card-title">Activity</h5>
+                                        <h3 class="card-title">Activity</h3>
                                         <h6 class="card-subtitle mb-2 text-muted">Activity Experience</h6>
                                         <p class="card-text">Introduce what you have done.</p>
                                         <a href="http://localhost:1337/cv/<%= cv.id %>/updateActivity"
@@ -61,27 +75,28 @@
                                 </div>
                         </div>
                 </div>
-                <div class="col-12 col-sm-4">
+                <div class="col-6">
                         <div class="card">
                                 <div class="card-body">
-                                        <h5 class="card-title">Reference</h5>
+                                        <h3 class="card-title">Reference</h3>
                                         <h6 class="card-subtitle mb-2 text-muted">Recommendation</h6>
                                         <p class="card-text">How do other people evaluate you？</p>
-                                        <a href="http://localhost:1337/cv/<%= cv.id %>/updateRef" class="card-link">View reference</a>
+                                        <a href="http://localhost:1337/cv/<%= cv.id %>/updateRef" class="card-link">View
+                                                reference</a>
 
                                 </div>
                         </div>
                 </div>
         </div>
         <br>
-        <form action="/cv/<%= cv.id %>/chooseTemplate" method="post">
+        <form action="/cv/<%= cv.id %>/updateTemplate" method="post">
                 <label class="label">Choose template</label>
                 <div class="control">
                         <p>Please select a template:</p>
                         <div class="col-4 col-12-small">
                                 <input type="radio" id="template-dark" name="template" value="template-dark">
                                 <label for="template-dark">Dark</label>
-                                <a href="http://localhost:1337/dark">Preview-dark</a>
+                                <a target="_blank" href="http://localhost:1337/cv/<%= cv.id %>/dark">Preview-dark</a>
                         </div>
                 </div>
 
@@ -89,13 +104,13 @@
                 <div class="col-4 col-12-small">
                         <input type="radio" id="template-white" name="template" value="template-white">
                         <label for="template-white">White</label>
-                        <a href="https://www.jquery.com/">Preview-white</a>
+                        <a target="_blank" href="http://localhost:1337/cv/<%= cv.id %>/white"">Preview-white</a>
 
                 </div>
-                <div class="field">
-                        <div class="control">
-                                <button class="button is-link" type="submit">Confirm</button>
-                        </div>
+                <div class=" field">
+                                <div class="control">
+                                        <button class="button is-link" type="submit">Confirm</button>
+                                </div>
                 </div>
         </form>
 

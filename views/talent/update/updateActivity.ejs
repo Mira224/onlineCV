@@ -1,43 +1,78 @@
-<!--create.ejs-->
-<form action="/cv/<%= cv.id %>/addActivity" method="post">
 
-    <div class="field">
-        <label class="label">Title</label>
-        <div class="control">
-            <input class="input" type="text" name="title" id="title" value="<%= cv.title%>" required>
-        </div>
+<div class="row justify-content-between">
+    <div class="col-6">
+        <h2 id="content">Activity Experience</h2>
     </div>
+    <div class="col-6">
+        <input type="button" value="addone" onclick="add()">
+    </div>
+</div>
+<form action="/cv/<%= cv.id %>/updateActivity" method="post">
+    <div class="col-9">
+        <% activities.forEach( function(activity) { %>
+        <div class="activityFields" id="activityFields">
+            <div class="field">
+                <label class="label">Title</label>
+                <div class="control">
+                    <input class="input" type="text" name="title" id="title" value="<%= activity.title%>" required>
+                </div>
+            </div>
 
-    <div class="field">
-        <label class="label">Organization</label>
-        <div class="control">
-            <input class="input" type="text" name="org" id="org" value="<%= cv.org%>" required>
+            <div class="field">
+                <label class="label">Organization</label>
+                <div class="control">
+                    <input class="input" type="text" name="org" id="org" value="<%= activity.org%>" required>
+                </div>
+            </div>
+            <div class="row justify-content-start">
+                <div class="col-4">
+                    <label class="label">Start Time</label>
+                    <div class="control">
+                        <input class="input" type="date" name="sTime" id="sTime" value="<%= activity.sTime%>"required>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label class="label">End Time</label>
+                    <div class="control">
+                        <input class="input" type="date" name="eTime" id="eTime" value="<%= activity.eTime%>"required>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Description</label>
+                <div class="control">
+                    <textarea class="textarea" placeholder="Please describe the activity" type="text" name="description"
+                        rows="5" required><%= activity.description%>"</textarea>
+                </div>
+            </div>
+            <br>
         </div>
-    </div>
-    <div class="field">
-        <label class="label">Start Time</label>
-        <div class="control">
-            <input class="input" type="date" name="sTime" id="sTime" value="<%= cv.sTime%>" required>
+        <% }); %>
+        <div id="activityFields_placeholder">
         </div>
-    </div>
-    <div class="field">
-        <label class="label">End Time</label>
-        <div class="control">
-            <input class="input" type="date" name="eTime" id="eTime" value="<%= cveTime.%>">
-        </div>
-    </div>
-    <div class="field">
-        <label class="label">Description</label>
-        <div class="control">
-            <textarea class="textarea" placeholder="Please describe the activity" type="text" name="description" value="<%= cv.description%>"
-                rows="5" required></textarea>
-        </div>
-    </div>
 
-    <div class="field">
-        <div class="control">
-            <button class="button is-link" type="submit">Save</button>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="control">
+                    <button class="button is-link" type="submit">Save</button>
+                </div>
+            </div>
+
+            <div class="col-md-4 ms-auto">
+                <div class="control">
+                    <a class="button is-link" href="http://localhost:1337/cv/<%= cv.id %>/content">Back</a>
+                </div>
+            </div>
         </div>
     </div>
-
 </form>
+
+<script>
+    var addone = "title:" + document.getElementById("title") + "org:" + document.getElementById("org") + "sTime:" + document.getElementById("sTime") + "eTime:" + document.getElementById("eTime:") + "description:" + document.getElementById("description");
+    function add() {
+        let fields = document.getElementById('activityFields');
+        let activityFields_placeholder = document.getElementById('activityFields_placeholder');
+        //$('.eduField').append(addone);
+        activityFields_placeholder.innerHTML += fields.innerHTML;
+    }
+</script>

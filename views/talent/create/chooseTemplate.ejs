@@ -1,0 +1,26 @@
+<h2 id="content">Choose template</h2>
+<form action="/cv/<%= cv.id %>/chooseTemplate" method="post">
+    <div class="col-9">
+        <div class="control">
+            <p>Please select a template:</p>
+            <div class="col-4 col-12-small">
+                <input type="radio" id="template-dark" name="template" value="template-dark">
+                <label for="template-dark">Dark</label>
+                <a target="_blank" href="http://localhost:1337/cv/<%= cv.id %>/dark">Preview-dark</a>
+            </div>
+        </div>
+
+
+        <div class="col-4 col-12-small">
+            <input type="radio" id="template-white" name="template" value="template-white">
+            <label for="template-white">White</label>
+            <a target="_blank" href="http://localhost:1337/cv/<%= cv.id %>/white">Preview-white</a>
+
+    </div>
+    <div class=" field">
+                <div class="control">
+                    <button class="button is-link" type="submit">Confirm</button>
+                </div>
+        </div>
+    </div>
+</form>

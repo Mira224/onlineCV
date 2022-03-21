@@ -1,103 +1,116 @@
 <div class="container">
     <div class="row gtr-uniform">
-      
-            <div class="col-5 col-12-xsmall">
-                <label class="label">Username</label>
-                <div class="control">
-                    <input class="input" type="text" name="searchUsername" id="searchUsername">
-                </div>
+
+        <div class="col-5 col-12-xsmall">
+            <label class="label">Username</label>
+            <div class="control">
+                <input class="input" type="text" name="searchUsername" id="searchUsername" list="userlist">
+                <datalist id="userlist">
+                    <% allusers.forEach(function(u){%>
+                        <option>
+                            <%=u.username%>
+                        </option>
+                        <% })%>
+                </datalist>
             </div>
-   
-       
-            <div class="col-5 col-12-xsmall">
-                <label class="label">Email</label>
-                <div class="control">
-                    <input class="input" type="text" name="searchEmail" id="searchEmail">
-                </div>
-
-    </div>
-    <div class="field">
-        <div class="control">
-            <button class="button is-info" type="submit" onclick="fetchPage(2,0)">Search</button>
         </div>
+
+
+        <div class="col-5 col-12-xsmall">
+            <label class="label">Email</label>
+            <div class="control">
+                <input class="input" type="text" name="searchEmail" id="searchEmail" list="emaillist">
+                <datalist id="emaillist">
+                <% allusers.forEach(function(u){%>
+                    <option>
+                        <%=u.email%>
+                    </option>
+                    <% })%></datalist>
+            </div>
+
+        </div>
+        <div class="field">
+            <div class="control">
+                <button class="button is-info" type="submit" onclick="fetchPage(2,0)">Search</button>
+            </div>
+        </div>
+
+
+        <div class="column">
+
+            <div id="p2"></div>
+
+        </div>
+
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="button" id="previousButton" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page" id="previousLink" href="#">1</a></li>
+                <li class="page-item"><a class="page" id="currentLink" href="#">2</a></li>
+                <li class="page-item"><a class="page" id="nextLink" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="button" id="nextButton" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
+    <script>
+        function setPagination(limit, offset, count) {
+            var previousButton = document.getElementById("previousButton");
+            var nextButton = document.getElementById("nextButton");
+            var currentLink = document.getElementById("currentLink");
+            var previousLink = document.getElementById("previousLink");
+            var nextLink = document.getElementById("nextLink");
 
+            var numOfRecords = count;
 
-    <div class="column">
+            previousButton.onclick = function () { fetchPage(limit, (offset - limit)) };
+            previousLink.onclick = function () { fetchPage(limit, (offset - limit)) };
+            currentLink.onclick = function () { fetchPage(limit, offset) };
+            nextLink.onclick = function () { fetchPage(limit, (offset + limit)) };
+            nextButton.onclick = function () { fetchPage(limit, (offset + limit)) };
 
-        <div id="p2"></div>
+            var currentPageNumber = Math.floor(offset / limit) + 1;
+            previousLink.innerHTML = currentPageNumber - 1;
+            currentLink.innerHTML = currentPageNumber;
+            nextLink.innerHTML = currentPageNumber + 1;
 
-    </div>
-
-
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="button" id="previousButton" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page" id="previousLink" href="#">1</a></li>
-            <li class="page-item"><a class="page" id="currentLink" href="#">2</a></li>
-            <li class="page-item"><a class="page" id="nextLink" href="#">3</a></li>
-            <li class="page-item">
-                <a class="button" id="nextButton" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</div>
-<script>
-    function setPagination(limit, offset, count) {
-        var previousButton = document.getElementById("previousButton");
-        var nextButton = document.getElementById("nextButton");
-        var currentLink = document.getElementById("currentLink");
-        var previousLink = document.getElementById("previousLink");
-        var nextLink = document.getElementById("nextLink");
-
-        var numOfRecords = count;
-
-        previousButton.onclick = function () { fetchPage(limit, (offset - limit)) };
-        previousLink.onclick = function () { fetchPage(limit, (offset - limit)) };
-        currentLink.onclick = function () { fetchPage(limit, offset) };
-        nextLink.onclick = function () { fetchPage(limit, (offset + limit)) };
-        nextButton.onclick = function () { fetchPage(limit, (offset + limit)) };
-
-        var currentPageNumber = Math.floor(offset / limit) + 1;
-        previousLink.innerHTML = currentPageNumber - 1;
-        currentLink.innerHTML = currentPageNumber;
-        nextLink.innerHTML = currentPageNumber + 1;
-
-        if (offset < limit) {
-            previousButton.setAttribute("disabled", true);
-            previousButton.href = "";
-            previousLink.style.display = "none";
-        } else {
-            previousButton.removeAttribute("disabled", false);
-            previousLink.style.display = "block";
+            if (offset < limit) {
+                previousButton.setAttribute("disabled", true);
+                previousButton.href = "";
+                previousLink.style.display = "none";
+            } else {
+                previousButton.removeAttribute("disabled", false);
+                previousLink.style.display = "block";
+            }
+            if (offset + limit >= numOfRecords) {
+                nextButton.setAttribute("disabled", true);
+                nextButton.href = "";
+                nextLink.style.display = "none";
+            } else {
+                nextButton.removeAttribute("disabled", false);
+                nextLink.style.display = "block";
+            }
         }
-        if (offset + limit >= numOfRecords) {
-            nextButton.setAttribute("disabled", true);
-            nextButton.href = "";
-            nextLink.style.display = "none";
-        } else {
-            nextButton.removeAttribute("disabled", false);
-            nextLink.style.display = "block";
-        }
-    }
-    setPagination();
-</script>
-<script>
-    async function fetchPage(limit, offset) {
-        sUsername = document.getElementById("searchUsername").value;
-        sEmail = document.getElementById("searchEmail").value;
+        setPagination();
+    </script>
+    <script>
+        async function fetchPage(limit, offset) {
+            sUsername = document.getElementById("searchUsername").value;
+            sEmail = document.getElementById("searchEmail").value;
 
-        var response = await fetch('/admin/alluser?username=' + sUsername + '&email=' + sEmail + '&limit=' + limit + "&offset=" + offset);
+            var response = await fetch('/admin/alluser?username=' + sUsername + '&email=' + sEmail + '&limit=' + limit + "&offset=" + offset);
 
-        if (response.ok) {
-            var users = await response.json();
-            var dynamicCode = `<table class="table is-bordered is-striped is-hoverable is-fullwidth">
+            if (response.ok) {
+                var users = await response.json();
+                var dynamicCode = `<table class="table is-bordered is-striped is-hoverable is-fullwidth">
         <tr>
             <td>
                 Username
@@ -108,8 +121,8 @@
         </tr> `;
 
 
-            users.forEach(function (user) {
-                dynamicCode += `  
+                users.forEach(function (user) {
+                    dynamicCode += `  
             <tr>
                 <td>
                     ${user.username}
@@ -129,12 +142,12 @@
                     </form>
                 </td>
             </tr>}); `;
-            });
-            document.querySelector("#p2").innerHTML = dynamicCode + "</table>";
-            setPagination(limit, offset, user.count);
-        } else {
-            alert(response.status + ": " + response.statusText);
-        }
-    };
-    fetchPage(2, 0);
-</script>
+                });
+                document.querySelector("#p2").innerHTML = dynamicCode + "</table>";
+                setPagination(limit, offset, user.count);
+            } else {
+                alert(response.status + ": " + response.statusText);
+            }
+        };
+        fetchPage(2, 0);
+    </script>

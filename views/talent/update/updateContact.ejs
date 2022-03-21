@@ -1,44 +1,48 @@
-<!--create.ejs-->
+
+<h2 id="content">Contact Information</h2>
 <form action="/cv/<%= cv.id %>/updateContact" method="post">
+    <div class="col-9">
+        <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+                <input class="input" type="text" name="name" id="name"  value="<%= cv.name%>" required>
+            </div>
+        </div>
 
-    <div class="field">
-        <label class="label">Name</label>
-        <div class="control">
-            <input class="input" type="text" name="name" id="name" value="<%= cv.name%>" required>
+        <div class="field">
+            <label class="label">Mobile Number</label>
+            <div class="control">
+                <input class="input" type="text" name="mobile" id="mobile" value="<%= cv.mobile%>"  required>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Email address</label>
+            <div class="control">
+                <input class="input" type="email" name="email" id="email" value="<%= cv.email%>"  required>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Objective</label>
+            <div class="control">
+                <textarea class="textarea" placeholder="Comment" type="text" name="ps" rows="3" value=""
+                    required><%= cv.ps%></textarea>
+            </div>
         </div>
     </div>
-
-    <div class="field">
-        <label class="label">Mobile Number</label>
-        <div class="control">
-            <input class="input" type="text" name="mobile" id="mobile" value="<%= cv.mobile%>" required>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="control">
+                <button class="button is-link" type="submit">Save</button>
+            </div>
+        </div>
+        <div class="col-md-4 ms-auto">
+            <div class="control">
+                <a class="button is-link" href="http://localhost:1337/cv/<%= cv.id %>/content">Back</a>
+            </div>
         </div>
     </div>
-    <div class="field">
-        <label class="label">Email address</label>
-        <div class="control">
-            <input class="input" type="email" name="email" id="email" value="<%= cv.email%>" required>
-        </div>
-    </div>
-    <div class="field">
-        <label class="label">Objective</label>
-        <div class="control">
-            <textarea class="textarea" placeholder="Comment" type="text" name="ps" rows="3" value=""
-                required><%= cv.ps%></textarea>
-        </div>
-    </div>
-
-    <div class="field">
-        <div class="control">
-            <button class="button is-link" type="submit">Save</button>
-        </div>
-    </div>
-
 
 </form>
 
-<div class="field">
-    <div class="control">
-        <a class="button is-link" href="http://localhost:1337/cv/<%= cv.id %>/addEdu">Next</a>
-    </div>
-</div>
+

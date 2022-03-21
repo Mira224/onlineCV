@@ -83,7 +83,7 @@ module.exports = {
 
         if (req.query.username) whereClause.username = { contains: req.query.username };
 
-        var email = parseInt(req.query.email);
+        // var email = parseInt(req.query.email);
         if (req.query.email) whereClause.email = email;
 
         if (req.wantsJSON) {
@@ -100,10 +100,10 @@ module.exports = {
                 limit: limit,
                 skip: offset,
             });
-            return res.json({thoseUsers,count});
-            
+            return res.json({ thoseUsers, count });
 
-        }else{
+
+        } else {
 
             var thoseUsers = await User.find({
                 where: whereClause,
@@ -113,13 +113,15 @@ module.exports = {
                 where: whereClause,
             });
 
-            return res.view('admin/alluser', { users: thoseUsers,count:count});
+            let allusers = await User.find()
+
+            return res.view('admin/alluser', { users: thoseUsers, allusers: allusers, count: count });
 
         }
 
-       
 
-        
+
+
 
         var users = await User.find()
 

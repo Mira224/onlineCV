@@ -52,7 +52,7 @@ module.exports = {
 
       if (!updatedCV) return res.notFound();
 
-      return res.redirect('/cv/' + thatCV.id + '/content');
+      return res.view('talent/create/createEdu', { cv: updatedCV });
       //     return res.view('talent/createContent', { cv: updatedCV })
     }
 
@@ -73,32 +73,31 @@ module.exports = {
       let data = req.body;
       if (Array.isArray(req.body.school)) {
         data = req.body.school.map(function (v, i) {
-
-          console.log("v:" + v);
           return {
             school: v,
+            major: req.body.major[i],
             sTime: req.body.sTime[i],
             eTime: req.body.eTime[i],
             description: req.body.description[i],
           }
         })
       }
-      console.log(data);
-      let edu = JSON.stringify(data)
-      console.log(edu);
+      // console.log(data);
+      // let edu = JSON.stringify(data)
+      // console.log(edu);
 
       var thatCV = await CV.findOne(req.params.id);
       if (!thatCV) return res.status(404).json("CV not found.");
 
-      if (!thatCV.education) {
-        thatCV.education = [req.body]
-      } else {
-        thatCV.education.push(req.body)
-      }
+      // if (!thatCV.education) {
+      //   thatCV.education = [req.body]
+      // } else {
+      thatCV.education = data;
+      // }
+      console.log(thatCV);
+      await CV.updateOne(thatCV.id).set({ education: thatCV.education })
 
-      await CV.updateOne(thatCV).set({ education: thatCV.education })
-
-      return res.view('talent/createContent', { cv: thatCV });
+      return res.view('talent/create/createWork', { cv: thatCV });
     }
 
   },
@@ -115,7 +114,7 @@ module.exports = {
 
       let data = req.body;
       if (Array.isArray(req.body.org)) {
-        data = req.body.school.map(function (v, i) {
+        data = req.body.org.map(function (v, i) {
           return {
             org: v,
             position: req.body.position[i],
@@ -125,21 +124,21 @@ module.exports = {
           }
         })
       }
-      console.log(data);
-      let work = JSON.stringify(data)
-      console.log(work);
+      // console.log(data);
+      // let work = JSON.stringify(data)
+      // console.log(work);
 
       var thatCV = await CV.findOne(req.params.id);
       if (!thatCV) return res.status(404).json("CV not found.");
 
-      if (!thatCV.work) {
-        thatCV.work = [req.body]
-      } else {
-        thatCV.work.push(req.body)
-      }
+      // if (!thatCV.work) {
+      //   thatCV.work = [req.body]
+      // } else {
+      thatCV.work = data;
+      // }
 
-      await CV.updateOne(thatCV).set({ work: thatCV.work })
-      return res.view('talent/createContent', { cv: thatCV });
+      await CV.updateOne(thatCV.id).set({ work: thatCV.work })
+      return res.view('talent/create/createActivity', { cv: thatCV });
     }
 
   },
@@ -157,7 +156,7 @@ module.exports = {
 
       let data = req.body;
       if (Array.isArray(req.body.activity)) {
-        data = req.body.activity.map(function (v, i) {
+        data = req.body.title.map(function (v, i) {
           return {
             title: v,
             org: req.body.org[i],
@@ -167,22 +166,22 @@ module.exports = {
           }
         })
       }
-      console.log(data);
-      let act = JSON.stringify(data)
-      console.log(act);
+      // console.log(data);
+      // let act = JSON.stringify(data)
+      // console.log(act);
 
       var thatCV = await CV.findOne(req.params.id);
       if (!thatCV) return res.status(404).json("CV not found.");
 
-      if (!thatCV.activity) {
-        thatCV.activity = [req.body]
-      } else {
-        thatCV.activity.push(req.body)
-      }
+      // if (!thatCV.activity) {
+      //   thatCV.activity = [req.body]
+      // } else {
+      thatCV.activity = data;
+      // }
 
-      await CV.updateOne(thatCV).set({ activity: thatCV.activity })
+      await CV.updateOne(thatCV.id).set({ activity: thatCV.activity })
 
-      return res.view('talent/createContent', { cv: thatCV });
+      return res.view('talent/create/createSkill', { cv: thatCV });
     }
 
   },
@@ -192,7 +191,6 @@ module.exports = {
 
       var thatCV = await CV.findOne(req.params.id);
 
-
       if (!thatCV) return res.status(404).json("CV not found.");
 
       return res.view('talent/create/createSkill', { cv: thatCV });
@@ -200,30 +198,29 @@ module.exports = {
 
       let data = req.body;
       if (Array.isArray(req.body.skill)) {
-        data = req.body.activity.map(function (v, i) {
+        data = req.body.content.map(function (v, i) {
           return {
             content: v,
-            org: req.body.level[i],
-
+            level: req.body.level[i],
           }
         })
       }
-      console.log(data);
-      let act = JSON.stringify(data)
-      console.log(act);
+      // console.log(data);
+      // let act = JSON.stringify(data)
+      // console.log(act);
 
       var thatCV = await CV.findOne(req.params.id);
       if (!thatCV) return res.status(404).json("CV not found.");
 
-      if (!thatCV.skill) {
-        thatCV.skill = [req.body]
-      } else {
-        thatCV.skill.push(req.body)
-      }
+      // if (!thatCV.skill) {
+      //   thatCV.skill = [req.body]
+      // } else {
+      thatCV.skill = data;
+      // }
 
-      await CV.updateOne(thatCV).set({ skill: thatCV.skill })
+      await CV.updateOne(thatCV.id).set({ skill: thatCV.skill })
 
-      return res.view('talent/createContent', { cv: thatCV });
+      return res.view('talent/create/createRef', { cv: thatCV });
     }
   },
   addRef: async function (req, res) {
@@ -240,7 +237,7 @@ module.exports = {
 
       let data = req.body;
       if (Array.isArray(req.body.reference)) {
-        data = req.body.reference.map(function (v, i) {
+        data = req.body.name.map(function (v, i) {
           return {
             name: v,
             relationship: req.body.relationship[i],
@@ -250,20 +247,20 @@ module.exports = {
           }
         })
       }
-      console.log(data);
-      let act = JSON.stringify(data)
-      console.log(act);
+      // console.log(data);
+      // let act = JSON.stringify(data)
+      // console.log(act);
 
       var thatCV = await CV.findOne(req.params.id);
       if (!thatCV) return res.status(404).json("CV not found.");
 
-      if (!thatCV.reference) {
-        thatCV.reference = [req.body]
-      } else {
-        thatCV.reference.push(req.body)
-      }
+      // if (!thatCV.reference) {
+      //   thatCV.reference = [req.body]
+      // } else {
+      thatCV.reference = data;
+      // }
 
-      await CV.updateOne(thatCV).set({ reference: thatCV.reference })
+      await CV.updateOne(thatCV.id).set({ reference: thatCV.reference })
 
       return res.view('talent/createContent', { cv: thatCV });
     }
@@ -276,7 +273,7 @@ module.exports = {
 
       if (!thatCV) return res.notFound();
 
-      return res.view('talent/createContent', { cv: thatCV });
+      return res.view('talent/create/chooseTemplate', { cv: thatCV });
 
     } else {
 
@@ -297,7 +294,7 @@ module.exports = {
 
       if (!thatCV) return res.status(404).json("CV not found.");
 
-      return res.view('talent/update/updateContact', { cv: thatCV});
+      return res.view('talent/update/updateContact', { cv: thatCV });
     }
 
     else {
@@ -306,8 +303,7 @@ module.exports = {
 
       if (!updatedCV) return res.notFound();
 
-      return res.redirect('/cv/' + thatCV.id + '/content', { cv: updatedCV });
-      //     return res.view('talent/createContent', { cv: updatedCV })
+      return res.view('talent/createContent', { cv: updatedCV })
     }
 
   },
@@ -318,8 +314,9 @@ module.exports = {
       var thatCV = await CV.findOne(req.params.id);
 
       if (!thatCV) return res.status(404).json("CV not found.");
+      console.log(thatCV);
 
-      return res.view('talent/createEdu', { cv: thatCV, edus: thatCV.education });
+      return res.view('talent/update/updateEdu', { cv: thatCV, edus: thatCV.education });
     } else {
 
       let data = req.body;
@@ -327,53 +324,214 @@ module.exports = {
         data = req.body.school.map(function (v, i) {
           return {
             school: v,
+            major: req.body.major[i],
             sTime: req.body.sTime[i],
             eTime: req.body.eTime[i],
             description: req.body.description[i],
           }
         })
       }
-      console.log(data);
-      let edu = JSON.stringify(data)
+      // console.log(data);
+      // let edu = JSON.stringify(data)
 
-      console.log(edu);
+      // console.log(edu);
 
       var thatCV = await CV.findOne(req.params.id);
       if (!thatCV) return res.status(404).json("CV not found.");
 
-      if (!thatCV.education) {
-        thatCV.education = [req.body]
-      } else {
-        thatCV.education.push(req.body)
-      }
+      // if (!thatCV.education) {
+      //   thatCV.education = [req.body]
+      // } else {
+      thatCV.education = data
+      // }
 
-      await CV.updateOne(thatCV).set({ education: thatCV.education })
+      await CV.updateOne(thatCV.id).set({ education: thatCV.education })
+
+      return res.view('talent/createContent', { cv: thatCV });
+    }
+  },
+  updateWork: async function (req, res) {
+
+    if (req.method == "GET") {
+
+      var thatCV = await CV.findOne(req.params.id);
+
+      if (!thatCV) return res.status(404).json("CV not found.");
+
+      return res.view('talent/update/updateWork', { cv: thatCV, works: thatCV.work });
+    } else {
+
+      let data = req.body;
+      if (Array.isArray(req.body.org)) {
+        data = req.body.org.map(function (v, i) {
+          return {
+            org: v,
+            position: req.body.position[i],
+            sTime: req.body.sTime[i],
+            eTime: req.body.eTime[i],
+            description: req.body.description[i],
+          }
+        })
+      }
+      // console.log(data);
+      // let work = JSON.stringify(data)
+      // console.log(work);
+
+      var thatCV = await CV.findOne(req.params.id);
+      if (!thatCV) return res.status(404).json("CV not found.");
+
+      // if (!thatCV.work) {
+      //   thatCV.work = [req.body]
+      // } else {
+      thatCV.work = data;
+      // }
+
+      await CV.updateOne(thatCV.id).set({ work: thatCV.work })
+      return res.view('talent/createContent', { cv: thatCV });
+    }
+
+  },
+  updateActivity: async function (req, res) {
+
+    if (req.method == "GET") {
+
+      var thatCV = await CV.findOne(req.params.id);
+
+      if (!thatCV) return res.status(404).json("CV not found.");
+
+      return res.view('talent/update/updateActivity', { cv: thatCV, activities: thatCV.activity });
+    } else {
+
+      let data = req.body;
+      if (Array.isArray(req.body.activity)) {
+        data = req.body.title.map(function (v, i) {
+          return {
+            title: v,
+            org: req.body.org[i],
+            sTime: req.body.sTime[i],
+            eTime: req.body.eTime[i],
+            description: req.body.description[i],
+          }
+        })
+      }
+      // console.log(data);
+      // let act = JSON.stringify(data)
+      // console.log(act);
+
+      var thatCV = await CV.findOne(req.params.id);
+      if (!thatCV) return res.status(404).json("CV not found.");
+
+      // if (!thatCV.activity) {
+      //   thatCV.activity = [req.body]
+      // } else {
+      thatCV.activity = data;
+      // }
+
+      await CV.updateOne(thatCV.id).set({ activity: thatCV.activity })
+
+      return res.view('talent/createContent', { cv: thatCV });
+    }
+  },
+  updateSkill: async function (req, res) {
+
+    if (req.method == "GET") {
+
+      var thatCV = await CV.findOne(req.params.id);
+
+      if (!thatCV) return res.status(404).json("CV not found.");
+
+      return res.view('talent/update/updateSkill', { cv: thatCV, skills: thatCV.skill });
+    } else {
+
+      let data = req.body;
+      if (Array.isArray(req.body.skill)) {
+        data = req.body.content.map(function (v, i) {
+          return {
+            content: v,
+            level: req.body.level[i],
+          }
+        })
+      }
+      // console.log(data);
+      // let act = JSON.stringify(data)
+      // console.log(act);
+      var thatCV = await CV.findOne(req.params.id);
+      if (!thatCV) return res.status(404).json("CV not found.");
+
+      // if (!thatCV.skill) {
+      //   thatCV.skill = [req.body]
+      // } else {
+      thatCV.skill = data;
+      // }
+
+      await CV.updateOne(thatCV.id).set({ skill: thatCV.skill })
+
+      return res.view('talent/createContent', { cv: thatCV });
+    }
+  },
+  updateRef: async function (req, res) {
+
+    if (req.method == "GET") {
+
+      var thatCV = await CV.findOne(req.params.id);
+
+
+      if (!thatCV) return res.status(404).json("CV not found.");
+
+      return res.view('talent/update/updateRef', { cv: thatCV, refs: thatCV.reference });
+    } else {
+
+      let data = req.body;
+      if (Array.isArray(req.body.reference)) {
+        data = req.body.name.map(function (v, i) {
+          return {
+            name: v,
+            relationship: req.body.relationship[i],
+            contact: req.body.contact[i],
+            comment: req.body.comment[i],
+
+          }
+        })
+      }
+      // console.log(data);
+      // let act = JSON.stringify(data)
+      // console.log(act);
+
+      var thatCV = await CV.findOne(req.params.id);
+      if (!thatCV) return res.status(404).json("CV not found.");
+
+      // if (!thatCV.reference) {
+      //   thatCV.reference = [req.body]
+      // } else {
+      thatCV.reference = data;
+      // }
+
+      await CV.updateOne(thatCV.id).set({ reference: thatCV.reference })
 
       return res.view('talent/createContent', { cv: thatCV });
     }
 
-
   },
 
+  updateTemplate: async function (req, res) {
+    if (req.method == "GET") {
 
+      var thatCV = await CV.findOne(req.params.id);
 
+      if (!thatCV) return res.notFound();
 
+      return res.view('talent/createContent', { cv: thatCV });
 
+    } else {
 
+      var updatedCV = await CV.updateOne(req.params.id).set(req.body);
 
+      if (!updatedCV) return res.notFound();
 
-
-
-
-
-
-
-  /*list all the parts associated with cv*/
-
-  previewCV: async function (req, res) {
-    if (req.method == "GET") return res.view('talent/preview');
-
+      return res.view('talent/createContent', { cv: updatedCV });
+    }
   },
+
 
   overview: async function (req, res) {
     //if (req.method == "GET") return res.view('pages/allcv');
@@ -396,31 +554,33 @@ module.exports = {
     return res.redirect('/cv/overview');
   },
 
-  // updatecv: async function (req, res) {
-  //   return res.redirect('/cv/overview');
-  // },
+  viewCV: async function (req, res) {
+    var thatCV = await CV.findOne(req.params.id);
+
+    if (!thatCV) return res.status(404).json("CV not found.");
+
+    return res.view('template/template-' + thatCV.template, { cv: thatCV, edus: thatCV.education, works: thatCV.work, activities: thatCV.activity, skills: thatCV.skill, refs: thatCV.reference });
 
 
+  },
 
+  /////preview
+  previewDark: async function (req, res) {
+    var thatCV = await CV.findOne(req.params.id);
 
+    if (!thatCV) return res.status(404).json("CV not found.");
 
-  //////////////////////////////////////////////
+    return res.view('template/template-dark', { layout: false, cv: thatCV, edus: thatCV.education, works: thatCV.work, activities: thatCV.activity, skills: thatCV.skill, refs: thatCV.reference });
 
+  },
 
-  cv: async function (req, res) {
-    // let user = await User.findOne({ username: req.params.username });
-    let cv = await CV.findOne({ id: req.params.id });
+  previewWhite: async function (req, res) {
+    var thatCV = await CV.findOne(req.params.id);
 
-    // var edu = cv.education;
-    // var work = cv.work;
-    // var skill = cv.skill;
-    // var activity = cv.activity;
-    // var reference = cv.reference;
+    if (!thatCV) return res.status(404).json("CV not found.");
 
-    var template = cv.template;
+    return res.view('template/template-white', { cv: thatCV, edus: thatCV.education, works: thatCV.work, activities: thatCV.activity, skills: thatCV.skill, refs: thatCV.reference });
 
-
-    return res.view('template/' + template, { cv: cv })
   },
 
 

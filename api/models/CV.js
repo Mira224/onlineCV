@@ -46,6 +46,14 @@ module.exports = {
     multimedia: {
       type: 'json'
     },
+    /*True: public
+    False:hidden*/
+    status:{
+      type:"boolean",
+      defaultsTo:true,
+    },
+    
+
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝

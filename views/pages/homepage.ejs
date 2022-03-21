@@ -5,23 +5,7 @@ This is your default homepage.
 <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
 <link rel="stylesheet" href="homepage.scss" />
 
-<div class="box-form">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div>
 
     <div class="left">
         <div class="overlay">
@@ -30,21 +14,61 @@ This is your default homepage.
 
         </div>
     </div>
+    <form action="/user/login" method="post"  onsubmit="submitForm(this);return false" >
+        <div class="col-9">
+            <div class="right">
+                <div class="field">
+                    <div class="control">
+                        <input class="input form-control" type="email" placeholder="Email" name="email" id="email"
+                            required>
+                    </div>
+                </div>
 
+                <div class="field">
+                    <div class="control">
+                        <input class="input form-control" type="password" placeholder="Password" name="password"
+                            id="password" required>
+                    </div>
+                </div>
+                <br>
+                <div class="col-12 col-lg-6 form-group">
+                    <button class="button" type="submit">
+                        Login
+                    </button>
+                </div>
+            </div>
 
-    <div class="right">
-        <h5>Login</h5>
-        <p>Don't have an account? <a href="#">Creat Your Account</a> it takes less than a minute</p>
-        <div class="inputs">
-            <input type="text" placeholder="user name">
-            <br>
-            <input type="password" placeholder="password">
+            <p>Don't have an account? <a href="http://localhost:1337/user/register">Create Your Account</a> it takes
+                less than a minute</p>
+
         </div>
 
-        <br><br>
-
-        <br>
-        <button>Login</button>
+    </form> <script>
+        async function submitForm(formElem) {
+    
+          var response = await fetch(formElem.action, {
+            method: formElem.method,
+            body: new FormData(formElem),
+          });
+    
+          if (response.ok) {
+            var user = await response.json();
+            alert("Welcome back, " + user.username);
+            // if (user.role == 'admin') {
+            //   location.assign('/admin')
+            // }
+            location.assign('/tips')
+            // location.reload(true);
+          } else if (response.status == 401) {
+            var msg = await response.json();
+            alert(msg);
+          } else {
+            alert(response.statusText);
+          }
+        };
+      </script>
     </div>
+
+</div>
 
 </div>

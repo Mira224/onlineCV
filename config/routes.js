@@ -28,6 +28,9 @@ module.exports.routes = {
   '/guide': { view: 'Tips/guide' },
   '/tips': { view: 'Tips/tips' },
 
+  'cv/:id':'CVController.viewCV',
+
+  
   '/admin': 'UserController.listUser',
   '/user/register': 'UserController.register',
   'GET /user': 'UserController.login',
@@ -38,7 +41,9 @@ module.exports.routes = {
   'GET /cv/create': 'CVController.createCV',
   'POST /cv/create': 'CVController.createCV',
 
-  'POST /cv/:id/delete': 'CVController.deletecv',
+  'GET /cv/:id/delete': 'CVController.deletecv',
+// view fixed cv with template//
+  '/cv/:id/dark':"CVController.previewDark",
 
   // 'GET /cv/:id/update':'CVController.updatecv,',
   // 'POST /cv/:id/update':'CVController.updatecv,',
@@ -77,6 +82,8 @@ module.exports.routes = {
 'POST /cv/:id/updateActivity': 'CVController.updateActivity',
 'GET /cv/:id/updateRef': 'CVController.updateRef',
 'POST /cv/:id/updateRef': 'CVController.updateRef',
+'GET /cv/:id/chooseTemplate': 'CVController.updateTemplate',
+'POST /cv/:id/chooseTemplate': 'CVController.updateTemplate',
 
 
   'GET /cv/overview': 'CVController.overview',

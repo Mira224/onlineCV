@@ -1,13 +1,24 @@
 <div class="container">
     <!-- Nav -->
 
-    <ul class="nav justify-content-center">
-        <li class="nav-item"><a href="#intro">Introduction</a></li>
-        <li class="nav-item"><a href="#tips">Writting Tips</a></li>
-        <li class="nav-item"><a href="#mistakes">Common Mistakes</a></li>
-        <li class="nav-item"><a href="#examples">Examples</a></li>
-    </ul>
-
+    <div class="site-nav">
+        <nav role="navigation">
+            <ul class="nav justify-content-center">
+                <li class="nav-item"><a class="nav-link" href="#intro" title="Intro"><span
+                            class="menu-title">Introduction</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#tips" title="Tips"><span class="menu-title">Writting
+                            Tips </span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#mistakes" title="Mistakes"><span
+                            class="menu-title">Common Mistakes</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#examples" title="Activity"><span
+                            class="menu-title">Examples</span></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 
 
     <div class="section" id="intro">
@@ -17,22 +28,35 @@
                     <strong>Introduction</strong>
                 </h5>
             </div>
-            <div class="main">
-                <h6 class="mbr-section-subtitle align-left mbr-fonts-style my-3 display-1"><strong>What is a CV</strong>
-                </h6>
-            </div>
-            <div class="col-12 col-md-12 text-col col-lg-6">
-                <p class="mbr-text align-left mbr-fonts-style mb-0 display-7"><strong>
-                        <p>A CV, which stands for curriculum vitae, is a document used when applying for jobs. It allows
-                            you
-                            to summarise your education, skills and experience enabling you to successfully sell your
-                            abilities to potential employers. Alongside your CV employers also usually ask for a cover
-                            letter.
-                        </p>
-                        <p>A standard CV in the UK should be no longer than two sides of A4. A new graduate with minimal
-                            experience may only need to use one side of A4. </p>
-                        <p>Stick to relevant information and don't repeat what you've said in your cover letter. </p>
-                    </strong><br></p>
+        </div>
+        <div class="main">
+            <h2 id="content"><strong>What is a CV</strong>
+            </h2>
+            <div class="row">
+                <div class="col-4 col-md-4 text-col col-lg-2" style="width: 48%;float:left;">
+
+                    <p class="mbr-text align-left mbr-fonts-style mb-0 display-7"><strong>
+                            <p>A CV, which stands for curriculum vitae, is a document used when applying for jobs. It
+                                allows
+                                you
+                                to summarise your education, skills and experience enabling you to successfully sell
+                                your
+                                abilities to potential employers. Alongside your CV employers also usually ask for a
+                                cover
+                                letter.
+                            </p>
+                            <p>A standard CV in the UK should be no longer than two sides of A4. A new graduate with
+                                minimal
+                                experience may only need to use one side of A4. </p>
+                            <p>Stick to relevant information and don't repeat what you've said in your cover letter.
+                            </p>
+                        </strong>
+
+                    </p>
+                </div>
+                <div class="col-4 col-md-4 col-lg-2" style="width: 48%;float:left">
+                    <img src="/styles/images/what-is-a-cv.png" class="rounded float-end">
+                </div>
             </div>
         </div>
 
@@ -40,29 +64,29 @@
 
         <div class="row">
             <div class="col-12 pb-5 col-lg-9">
-                <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-1">
+                <h2>
                     <strong>What to include in a CV</strong>
-                </h3>
+                </h2>
             </div>
         </div>
         <div class="row justify-content-center">
 
             <div class="card col-4 col-12-medium">
                 <div class="card-body">
-                    <h5 class="card-title">Contact details</h5>
+                    <h3 class="card-title">Contact details</h3>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 </div>
             </div>
 
             <div class="card col-4 col-12-medium">
                 <div class="card-body">
-                    <h5 class="card-title">Education</h5>
+                    <h3 class="card-title">Education</h3>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 </div>
             </div>
             <div class="card col-4 col-12-medium">
                 <div class="card-body">
-                    <h5 class="card-title">Work Experience</h5>
+                    <h3 class="card-title">Work Experience</h3>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 </div>
             </div>
@@ -70,22 +94,22 @@
         <br>
         <div class="row justify-content-center">
 
-            <div class="card col-12 col-md-6 col-lg-4">
+            <div class="card col-4 col-12-medium">
                 <div class="card-body">
-                    <h5 class="card-title">Skills</h5>
+                    <h3 class="card-title">Skills</h3>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 </div>
             </div>
 
-            <div class="card col-12 col-md-6 col-lg-4">
+            <div class="card col-4 col-12-medium">
                 <div class="card-body">
-                    <h5 class="card-title">Project & Activity Experience</h5>
+                    <h3 class="card-title">Project & Activity Experience</h3>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 </div>
             </div>
-            <div class="card col-12 col-md-6 col-lg-4">
+            <div class="card col-4 col-12-medium">
                 <div class="card-body">
-                    <h5 class="card-title">References</h5>
+                    <h3 class="card-title">References</h3>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 </div>
             </div>
@@ -103,183 +127,181 @@
         <div class="row justify-content-center">
             <div class="col-12 col-sm-8 col-lg-6">
                 <!-- Section Heading-->
-                <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s"
-                    style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                    <h3><span>Common </span> Mistakes</h3>
-                    <div class="line"></div>
-                </div>
+
+                <h2>Common Mistakes</h2>
+
             </div>
         </div>
+    </div>
 
-        <div class="row justify-content-center">
-            <!-- FAQ Area-->
-            <div class="col-12 col-sm-10 col-lg-8">
+    <div class="row justify-content-center">
+        <!-- FAQ Area-->
+        <div class="col-12 col-sm-10 col-lg-8">
+            <div class="accordion faq-accordian" id="faqAccordion">
+                <div class="card border-0 wow fadeInUp" data-wow-delay="0.2s"
+                    style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <div class="card-header" id="headingOne">
+                        <h3 class="mb-0 collapsed"><a data-bs-toggle="collapse" href="#collapseOne" role="button"
+                                aria-expanded="false" aria-controls="collapseOne">1. Poor formatting<span
+                                    class="lni-chevron-up"></span></a></h3>
+                    </div>
+                    <div class="collapse" id="collapseOne">
+                        <div class="card-body">
+                            <p>It's important to help the reader get to the most relevant information as easily as
+                                possible
+                                when
+                                thinking about how to format your CV.</p>
+                            <p>Don't use anything smaller than size 10 font and make sure there's a good amount of
+                                white
+                                space.
+                            </p>
+                            <p>Focus on the content rather than choosing style like stars and bars on rating over
+                                substance.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-0 wow fadeInUp" data-wow-delay="0.3s"
+                    style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                    <div class="card-header" id="headingTwo">
+                        <h3 class="mb-0 collapsed"><a data-bs-toggle="collapse" href="#collapseTwo" role="button"
+                                aria-expanded="false" aria-controls="collapseTwo">
+                                2. Failing to tailor your
+                                application<span class="lni-chevron-up"></span></a></h3>
+                    </div>
+                    <div class="collapse" id="collapseTwo">
+                        <div class="card-body">
+                            <p>Everything that you include must be completely tailored to the company and role that
+                                you're
+                                applying for. This will make it easy for recruiters to see that you're the perfect
+                                candidate.
+                            </p>
+                            <p>Check specific requirements and remove irrelevant experiences to show that you are
+                                interested
+                                enough in the role and willing to consider your application.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-0 wow fadeInUp" data-wow-delay="0.3s"
+                    style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                    <div class="card-header" id="headingThree">
+                        <h3 class="mb-0 collapsed"><a data-bs-toggle="collapse" href="#collapseThree" role="button"
+                                aria-expanded="false" aria-controls="collapseThree">3. Spelling errors<span
+                                    class="lni-chevron-up"></span></a></h3>
+                    </div>
+                    <div class="collapse" id="collapseThree">
+                        <div class="card-body">
+                            <p>Check everything in your CV. An error-free CV is vital in showcasing your precision
+                                and
+                                attention
+                                to detail</p>
+                            <p>A tip to see if there's a spelling or grammatical mistake is to temporarily change
+                                the font,
+                                size
+                                and colour - it can trick your brain into thinking it's a new piece of writing,
+                                enabling you
+                                to
+                                spot mistakes you might have previously missed.</p>
+                        </div>
+                    </div>
+                </div>
+
+
                 <div class="accordion faq-accordian" id="faqAccordion">
                     <div class="card border-0 wow fadeInUp" data-wow-delay="0.2s"
                         style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                        <div class="card-header" id="headingOne">
-                            <h6 class="mb-0 collapsed"><a data-bs-toggle="collapse" href="#collapseOne" role="button"
-                                    aria-expanded="false" aria-controls="collapseOne">1. Poor formatting<span
-                                        class="lni-chevron-up"></span></a></h6>
+
+
+                        <div class="card-header" id="headingFour">
+                            <h3 class="mb-0 collapsed"><a data-bs-toggle="collapse" href="#collapseFour" role="button"
+                                    aria-expanded="false" aria-controls="collapseFour">4. Lying<span
+                                        class="lni-chevron-up"></span></a></h3>
                         </div>
-                        <div class="collapse" id="collapseOne">
+                        <div class="collapse" id="collapseFour">
+
                             <div class="card-body">
-                                <p>It's important to help the reader get to the most relevant information as easily as
-                                    possible
-                                    when
-                                    thinking about how to format your CV.</p>
-                                <p>Don't use anything smaller than size 10 font and make sure there's a good amount of
-                                    white
-                                    space.
-                                </p>
-                                <p>Focus on the content rather than choosing style like stars and bars on rating over
-                                    substance.
-                                </p>
+                                <p>The facts on your CV are easy to corroborate so never assume that recruiters
+                                    won't
+                                    make
+                                    enquiries
+                                    to do so.</p>
+                                <p>Spend time on selling your skills, qualifications and experiences rather than
+                                    embellishing
+                                    your
+                                    experience. </p>
                             </div>
                         </div>
                     </div>
                     <div class="card border-0 wow fadeInUp" data-wow-delay="0.3s"
                         style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
-                        <div class="card-header" id="headingTwo">
-                            <h6 class="mb-0 collapsed"><a data-bs-toggle="collapse" href="#collapseTwo" role="button"
-                                    aria-expanded="false" aria-controls="collapseTwo">
-                                    2. Failing to tailor your
-                                    application<span class="lni-chevron-up"></span></a></h6>
+                        <div class="card-header" id="headingFive">
+
+                            <h3 class="mb-0 collapsed"><a data-bs-toggle="collapse" href="#collapseFive" role="button"
+                                    aria-expanded="false" aria-controls="collapseFive">5. Lack of
+                                    evidence and
+                                    explaining 'why'<span class="lni-chevron-up"></span></a></h3>
                         </div>
-                        <div class="collapse" id="collapseTwo">
+                        <div class="collapse" id="collapseFive">
                             <div class="card-body">
-                                <p>Everything that you include must be completely tailored to the company and role that
-                                    you're
-                                    applying for. This will make it easy for recruiters to see that you're the perfect
-                                    candidate.
+                                <p>Don't just focus on the things you did, but also on the things you achieved.
                                 </p>
-                                <p>Check specific requirements and remove irrelevant experiences to show that you are
-                                    interested
-                                    enough in the role and willing to consider your application.</p>
+                                <p>You need to point out ways how you took previous duties and went beyond to
+                                    make a
+                                    difference.
+                                </p>
+                                <p>You should elaborate further on the resulting skills you've gained and
+                                    outline what
+                                    you've
+                                    taken
+                                    from the experience.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="card border-0 wow fadeInUp" data-wow-delay="0.3s"
+                    <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s"
                         style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-                        <div class="card-header" id="headingThree">
-                            <h6 class="mb-0 collapsed"><a data-bs-toggle="collapse" href="#collapseThree" role="button"
-                                    aria-expanded="false" aria-controls="collapseThree">3. Spelling errors<span
-                                        class="lni-chevron-up"></span></a></h6>
-                        </div>
-                        <div class="collapse" id="collapseThree">
-                            <div class="card-body">
-                                <p>Check everything in your CV. An error-free CV is vital in showcasing your precision
-                                    and
-                                    attention
-                                    to detail</p>
-                                <p>A tip to see if there's a spelling or grammatical mistake is to temporarily change
-                                    the font,
-                                    size
-                                    and colour - it can trick your brain into thinking it's a new piece of writing,
-                                    enabling you
-                                    to
-                                    spot mistakes you might have previously missed.</p>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="accordion faq-accordian" id="faqAccordion">
-                        <div class="card border-0 wow fadeInUp" data-wow-delay="0.2s"
-                            style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-
-
-                            <div class="card-header" id="headingFour">
-                                <h6 class="mb-0 collapsed"><a data-bs-toggle="collapse" href="#collapseFour"
-                                        role="button" aria-expanded="false" aria-controls="collapseFour">4. Lying<span
-                                            class="lni-chevron-up"></span></a></h6>
-                            </div>
-                            <div class="collapse" id="collapseFour">
-
-                                <div class="card-body">
-                                    <p>The facts on your CV are easy to corroborate so never assume that recruiters
-                                        won't
-                                        make
-                                        enquiries
-                                        to do so.</p>
-                                    <p>Spend time on selling your skills, qualifications and experiences rather than
-                                        embellishing
-                                        your
-                                        experience. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card border-0 wow fadeInUp" data-wow-delay="0.3s"
-                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
-                            <div class="card-header" id="headingFive">
-
-                                <h6 class="mb-0 collapsed"><a data-bs-toggle="collapse" href="#collapseFive"
-                                        role="button" aria-expanded="false" aria-controls="collapseFive">5. Lack of
-                                        evidence and
-                                        explaining 'why'<span class="lni-chevron-up"></span></a></h6>
-                            </div>
-                            <div class="collapse" id="collapseFive">
-                                <div class="card-body">
-                                    <p>Don't just focus on the things you did, but also on the things you achieved.
-                                    </p>
-                                    <p>You need to point out ways how you took previous duties and went beyond to
-                                        make a
-                                        difference.
-                                    </p>
-                                    <p>You should elaborate further on the resulting skills you've gained and
-                                        outline what
-                                        you've
-                                        taken
-                                        from the experience.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s"
-                            style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-                            <div class="card-header" id="headingSix">
-                                <h6 class="mb-0 collapsed"><a data-bs-toggle="collapse" href="#collapseSix"
-                                    role="button" aria-expanded="false" aria-controls="collapseSix">6. Ignoring gaps in your work
-                                    history<span class="lni-chevron-up"></span></a></h6>
+                        <div class="card-header" id="headingSix">
+                            <h3 class="mb-0 collapsed"><a data-bs-toggle="collapse" href="#collapseSix" role="button"
+                                    aria-expanded="false" aria-controls="collapseSix">6. Ignoring gaps
+                                    in your work
+                                    history<span class="lni-chevron-up"></span></a></h3>
                         </div>
                         <div class="collapse" id="collapseSix">
-                                <div class="card-body">
-                                    <p>Explain the gaps in employment history. It is fairly common and you can
-                                        explain why
-                                        you spent
-                                        away from work due to volunteer work, medical condition or redundancy.</p>
-                                    <p>If there is no space in CV, you can further explain the gaps in your
-                                        experience in
-                                        the cover
-                                        letter.</p>
-                                </div>
+                            <div class="card-body">
+                                <p>Explain the gaps in employment history. It is fairly common and you can
+                                    explain why
+                                    you spent
+                                    away from work due to volunteer work, medical condition or redundancy.</p>
+                                <p>If there is no space in CV, you can further explain the gaps in your
+                                    experience in
+                                    the cover
+                                    letter.</p>
                             </div>
                         </div>
                     </div>
-
                 </div>
-
 
             </div>
 
+
         </div>
-    </div>
-
-    <div class="section" id="examples">
-        <header class="major">
-            <h2>Examples</h2>
-            <p>Here are some examples for your reference.</p>
-        </header>
-
-        <p class="content"></p>
-        <footer class="major">
-            <ul class="actions special">
-                <li><a href="*" class="button">Learn More</a></li>
-            </ul>
-        </footer>
-
-        <ul class="actions special">
-            <li><a href="http://localhost:1337/cv/create" class="button primary">Get Started</a>
-            </li>
-        </ul>
 
     </div>
+</div>
+<br>
+<div class="section" id="examples">
+    <header class="major">
+        <h2>Examples</h2>
+        <p>Here are some examples for your reference.</p>
+    </header>
+
+    <p class="content"></p>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="control">
+                <a href="http://localhost:1337/cv/create" class="button primary">Get Started</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
