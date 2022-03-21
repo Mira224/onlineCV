@@ -77,7 +77,40 @@ module.exports = {
 
     },
 
-    listUser: async function (req, res) {
+    deleteUser: async function (req, res) {
+        var deletedUser = await User.destroyOne(req.params.id);
+
+        if (!deletedUser) return res.notFound();
+
+        return res.staus(200).redirect('/admin/searchuser')
+    },
+
+    changePassword: async function (req, res) {
+        if (req.method == "GET") {
+
+            var thatUser = await CV.findOne(req.params.id);
+      
+      
+            if (!thatUser) return res.status(404).json("User not found.");
+      
+            return res.view('admin/changePassword', { user: thatUser});
+          } else {
+
+        var thatUser = await User.findOne(req.params.id);
+
+        if (!thatUser) return res.notFound();
+
+        var password = await bcrypt.hash(req.body.password, 10);
+
+        await User.updateOne(thatUser.id).set({ password: password})
+
+        return res.ok();
+          }
+
+    },
+
+
+    searchUser: async function (req, res) {
 
         var whereClause = {};
 
@@ -115,40 +148,25 @@ module.exports = {
 
             let allusers = await User.find()
 
-            return res.view('admin/alluser', { users: thoseUsers, allusers: allusers, count: count });
+            return res.view('admin/searchuser', { users: thoseUsers, allusers: allusers, count: count });
 
         }
 
 
-
-
-
-        var users = await User.find()
-
-        return res.view('admin/alluser', { users: users });
-
     },
-    deleteUser: async function (req, res) {
-        var deletedUser = await User.destroyOne(req.params.id);
-
-        if (!deletedUser) return res.notFound();
-
-        return res.staus(200).redirect('/admin/alluser')
-    },
-
     paginate: async function (req, res) {
 
         var limit = Math.max(req.query.limit, 2) || 2;
         var offset = Math.max(req.query.offset, 0) || 0;
 
-        var somePersons = await Person.find({
+        var someUsers = await User.find({
             limit: limit,
             skip: offset
         });
 
         var count = await Person.count();
 
-        return res.view('person/paginate', { persons: somePersons, numOfRecords: count });
+        return res.view('admin/userpage', { users: someUsers, numOfRecords: count });
     },
 
 };

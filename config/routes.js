@@ -31,7 +31,7 @@ module.exports.routes = {
   'cv/:id':'CVController.viewCV',
 
   
-  '/admin': 'UserController.listUser',
+  
   '/user/register': 'UserController.register',
   'GET /user': 'UserController.login',
   'GET /user/login': 'UserController.login',
@@ -88,17 +88,18 @@ module.exports.routes = {
 
   'GET /cv/overview': 'CVController.overview',
   'POST /cv/overview': 'CVController.overview',
-  'GET /:id/cv/:title': 'CVController.cv',
+  'GET /cv/view/:id': 'CVController.viewCV',
+  'POST /cv/view/:id': 'CVController.viewCV',
 
+  'GET /changePW/:id':'UserController.changePassword',
+  'POST /changePW/:id':'UserController.changePassword',
 
-  'GET /admin/':{ view: 'pages/adminCentre' },
-  'GET /admin/alluser':'UserController.listUser',
-  'POST /admin/alluser':'UserController.listUser',
+  '/admin': { view: 'admin/adminCenter' },
+  'GET /admin/searchuser':'UserController.searchUser',
+  'POST /admin/searchuser':'UserController.searchUser',
   // 'GET /admin/searchUser':'UserController.searchUser',
   // 'POST /admin/searchUser':'UserController.searchUser',
   'GET /admin/paginate':'UserController.paginate',
- 
-  'POST /admin/allusers':'UserController.listUser',
   'POST /admin/:id/delete':'UserController.deleteUser',
 
 

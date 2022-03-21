@@ -31,10 +31,11 @@ module.exports = {
     mobile: {
       type: 'string',
     },
+
     status: {
-      type: 'string',
-      isIn: ['active', 'block', 'delete'],
-      defaultsTo: 'active',
+      type: 'number',
+      // 'active'1, 'block'2, 'delete'0
+      defaultsTo: 1,
     },
    
     role: {

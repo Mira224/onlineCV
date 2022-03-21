@@ -11,15 +11,21 @@
                 <% cvs.forEach( function(cv) { %>
                     <tr>
                         <td>
-                         <a href="http://localhost:1337/<%= user.id %>/cv/<%= cv.title %>"> </a>   <%= cv.title %>
+                            <a href="http://localhost:1337/<%= user.id %>/cv/<%= cv.title %>"> </a>
+                            <%= cv.title %>
                         </td>
                         <td>
-                           
+
                         </td>
-                        
+
                         <td><a class="button" href="http://localhost:1337/cv/<%= cv.id %>/content">Update</button></td>
+                        <td><a class="button" href="http://localhost:1337/cv/<%= cv.id %>/content">View</button></td>
                         <td>
-                            <a class="button" href="http://localhost:1337/cv/<%= cv.id %>/delete/">Delete</button></td>
+                            <!-- <a class="button" href="http://localhost:1337/cv/<%= cv.id %>/delete/"
+                               >Delete</button> -->
+                            <a class="button" href="http://localhost:1337/cv/<%= cv.id %>/delete/"
+                                onclick="myFunction()">Delete</button>
+                        </td>
                     </tr>
                     <% }); %>
             </div>
@@ -30,3 +36,13 @@
         </table>
     </div>
 </div>
+<script>
+    function myFunction() {
+        if (confirm("Delete if?") == true) {
+            alert("Delete successfully.");
+        } else {
+            alert("Action canceled");
+        }
+
+    }
+</script>

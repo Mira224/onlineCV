@@ -551,7 +551,8 @@ module.exports = {
 
     if (!deletedCV) return res.notFound();
 
-    return res.redirect('/cv/overview');
+    // return res.ok();
+     return res.redirect('/cv/overview');
   },
 
   viewCV: async function (req, res) {
