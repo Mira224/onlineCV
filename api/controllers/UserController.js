@@ -111,6 +111,14 @@ module.exports = {
 
 
     searchUser: async function (req, res) {
+        if (req.method=="GET"){
+
+            let allusers = await User.find()
+            console.log(allusers)
+
+            return res.view('admin/searchuser', { allusers: allusers });
+        }
+        else{
 
         var whereClause = {};
 
@@ -118,6 +126,7 @@ module.exports = {
 
         // var email = parseInt(req.query.email);
         if (req.query.email) whereClause.email = email;
+        console.log(whereClause);
 
         if (req.wantsJSON) {
             var limit = Math.max(req.query.limit, 2) || 2;
@@ -146,12 +155,10 @@ module.exports = {
                 where: whereClause,
             });
 
-            let allusers = await User.find()
-
-            return res.view('admin/searchuser', { users: thoseUsers, allusers: allusers, count: count });
+            return res.view('admin/userpage', { users: thoseUsers, count: count });
 
         }
-
+    }
 
     },
     paginate: async function (req, res) {
@@ -164,7 +171,7 @@ module.exports = {
             skip: offset
         });
 
-        var count = await Person.count();
+        var count = await User.count();
 
         return res.view('admin/userpage', { users: someUsers, numOfRecords: count });
     },

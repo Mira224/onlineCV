@@ -266,24 +266,24 @@ module.exports = {
     }
 
   },
-  chooseTemplate: async function (req, res) {
-    if (req.method == "GET") {
+  // chooseTemplate: async function (req, res) {
+  //   if (req.method == "GET") {
 
-      var thatCV = await CV.findOne(req.params.id);
+  //     var thatCV = await CV.findOne(req.params.id);
 
-      if (!thatCV) return res.notFound();
+  //     if (!thatCV) return res.notFound();
 
-      return res.view('talent/create/chooseTemplate', { cv: thatCV });
+  //     return res.view('talent/create/chooseTemplate', { cv: thatCV });
 
-    } else {
+  //   } else {
 
-      var updatedCV = await CV.updateOne(req.params.id).set(req.body);
+  //     var updatedCV = await CV.updateOne(req.params.id).set(req.body);
 
-      if (!updatedCV) return res.notFound();
+  //     if (!updatedCV) return res.notFound();
 
-      return res.view('talent/createContent', { cv: thatCV });
-    }
-  },
+  //     return res.view('talent/createContent', { cv: thatCV });
+  //   }
+  // },
 
   //update content of each part
   updateContact: async function (req, res) {
