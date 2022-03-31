@@ -93,9 +93,13 @@ html {
 
 body {
   background: #ffffff;
-}
+  background-image:url('/styles/images/footprints.png');
+  background-size:100%;
+  background-repeat:no-repeat;
 
+}
 body.is-preload *, body.is-preload *:before, body.is-preload *:after, body.is-resizing *, body.is-resizing *:before, body.is-resizing *:after {
+ 
   -moz-animation: none !important;
   -webkit-animation: none !important;
   -ms-animation: none !important;
@@ -2758,3 +2762,11 @@ a.image {
     -webkit-transform: scale(1.075);
     -ms-transform: scale(1.075);
     transform: scale(1.075); }
+ .cveg{
+  display: inline;
+ }
+ .cveg img {
+  position: relative;
+  width:300px;
+  height:400px;
+ }
