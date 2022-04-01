@@ -1,6 +1,6 @@
 
 <h2 id="content">Contact Information</h2>
-<form action="/cv/<%= cv.id %>/updateContact" method="post">
+<form action="/cv/updateContact/<%= cv.id %>" method="post">
     <div class="col-9">
         <div class="field">
             <label class="label">Name</label>
@@ -38,7 +38,7 @@
         </div>
         <div class="col-md-4 ms-auto">
             <div class="control">
-                <a class="button is-link" href="http://localhost:1337/cv/<%= cv.id %>/content">Back</a>
+                <a class="button is-link" href="http://localhost:1337/cv/content/<%= cv.id %>">Back</a>
             </div>
         </div>
     </div>

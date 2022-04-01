@@ -49,8 +49,9 @@ module.exports = {
     /*True: public
     False:hidden*/
     status:{
-      type:"boolean",
-      defaultsTo:false,
+      type:"string",
+      isIn: ['public', 'private'],
+      defaultsTo: 'private'
     },
     
 

@@ -6,7 +6,7 @@
         <input type="button" value="addone" onclick="add()">
     </div>
 </div>
-<form action="/cv/<%= cv.id %>/addRef" method="post">
+<form action="/cv/addRef/<%= cv.id %>" method="post">
     <div class="col-9">
         <div class="refFields" id="refFields">
             <div class="field">
@@ -51,7 +51,7 @@
             <div class="col-md-4 ms-auto">
                 <div class="control">
                     <!-- <a class="button is-link" href="http://localhost:1337/cv/<%= cv.id %>/chooseTemplate">Skip</a> -->
-                    <a class="button is-link" href="http://localhost:1337/cv/<%= cv.id %>/content">Skip</a> 
+                    <a class="button is-link" href="http://localhost:1337/cv/content/<%= cv.id %>">Skip</a> 
                 </div>
             </div>
         </div>

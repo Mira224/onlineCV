@@ -4,9 +4,10 @@
             <div class="column">
                 <tr>
                     <th>CV title</th>
-                    <th></th>
-                    <th> </th>
-                    <th> </th>
+                    <th>Update</th>
+                    <th>View</th>
+                    <th>Delete</th>
+                    <th>Status</th>
                 </tr>
                 <% cvs.forEach( function(cv) { %>
                     <tr>
@@ -14,18 +15,17 @@
                             <a href="http://localhost:1337/<%= user.id %>/cv/<%= cv.title %>"> </a>
                             <%= cv.title %>
                         </td>
-                        <td>
-
-                        </td>
 
                         <td><a class="button" href="http://localhost:1337/cv/<%= cv.id %>/content">Update</button></td>
                         <td><a class="button" href="http://localhost:1337/cv/<%= cv.id %>/content">View</button></td>
                         <td>
                             <!-- <a class="button" href="http://localhost:1337/cv/<%= cv.id %>/delete/"
                                >Delete</button> -->
-                            <a class="button" href="http://localhost:1337/cv/<%= cv.id %>/delete/"
+                            <a class="button" href="http://localhost:1337/cv/delete/<%= cv.id %>"
                                 onclick="myFunction()">Delete</button>
                         </td>
+                        <td> <a class="button" href="http://localhost:1337/cv/changeStatus/<%= cv.id %>">
+                            <%= cv.status %></button></td>
                     </tr>
                     <% }); %>
             </div>
@@ -38,7 +38,7 @@
 </div>
 <script>
     function myFunction() {
-        if (confirm("Delete if?") == true) {
+        if (confirm("Delete it?") == true) {
             alert("Delete successfully.");
         } else {
             alert("Action canceled");

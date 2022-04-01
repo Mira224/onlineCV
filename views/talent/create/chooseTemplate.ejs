@@ -1,12 +1,12 @@
 <h2 id="content">Choose template</h2>
-<form action="/cv/<%= cv.id %>/chooseTemplate" method="post">
+<form action="/cv/chooseTemplate/<%= cv.id %>" method="post">
     <div class="col-9">
         <div class="control">
             <p>Please select a template:</p>
             <div class="col-4 col-12-small">
                 <input type="radio" id="template-dark" name="template" value="template-dark">
                 <label for="template-dark">Dark</label>
-                <a target="_blank" href="http://localhost:1337/cv/<%= cv.id %>/dark">Preview-dark</a>
+                <a target="_blank" href="http://localhost:1337/cv/dark/<%= cv.id %>">Preview-dark</a>
             </div>
         </div>
 
@@ -14,13 +14,26 @@
         <div class="col-4 col-12-small">
             <input type="radio" id="template-white" name="template" value="template-white">
             <label for="template-white">White</label>
-            <a target="_blank" href="http://localhost:1337/cv/<%= cv.id %>/white">Preview-white</a>
+            <a target="_blank" href="http://localhost:1337/cv/white/<%= cv.id %>">Preview-white</a>
 
-    </div>
-    <div class=" field">
-                <div class="control">
-                    <button class="button is-link" type="submit">Confirm</button>
-                </div>
+        </div>
+        <div class=" field">
+            <div class="control">
+                <button class="button is-link" type="submit" onclick="templatechoice()">Confirm</button>
+            </div>
         </div>
     </div>
 </form>
+<script>
+    function templatechoice() {
+        var selector = document.querySelector('input[name="template"]:checked');
+        if (selector) {
+            console.log(selector.value);
+            document.querySelector('input[name="template"]:checked').value;
+        }
+        else { alert("Please choose one template.") };
+
+    }
+
+
+</script>

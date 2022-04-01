@@ -6,7 +6,7 @@
         <input type="button" value="addone" onclick="add()">
     </div>
 </div>
-<form action="/cv/<%= cv.id %>/addRef" method="post">
+<form action="/cv/addRef/<%= cv.id %>" method="post">
     <div class="col-9">
         <% refs.forEach( function(ref) { %>
         <div class="refFields" id="refFields">
@@ -51,7 +51,7 @@
 
             <div class="col-md-4 ms-auto">
                 <div class="control">
-                    <a class="button is-link" href="http://localhost:1337/cv/<%= cv.id %>/conent">Back</a>
+                    <a class="button is-link" href="http://localhost:1337/cv/conent/<%= cv.id %>">Back</a>
                 </div>
             </div>
         </div>

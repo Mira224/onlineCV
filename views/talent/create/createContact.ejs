@@ -1,6 +1,6 @@
 <!--create.ejs-->
 <h2 id="content">Contact Information</h2>
-<form action="/cv/<%= cv.id %>/addContact" method="post">
+<form action="/cv/addContact/<%= cv.id %>" method="post">
     <div class="col-9">
         <div class="field">
             <label class="label">Name</label>
@@ -24,7 +24,7 @@
         <div class="field">
             <label class="label">Objective</label>
             <div class="control">
-                <textarea class="textarea" placeholder="Comment" type="text" name="ps" rows="3" value=""
+                <textarea class="textarea" placeholder="Introduce yourself briefly" type="text" name="ps" rows="3" value=""
                     required></textarea>
             </div>
         </div>
@@ -38,7 +38,7 @@
         </div>
         <div class="col-md-4 ms-auto">
             <div class="control">
-                <a class="button is-link" href="http://localhost:1337/cv/<%= cv.id %>/addEdu">Skip</a>
+                <a class="button is-link" href="http://localhost:1337/cv/addEdu/<%= cv.id %>">Skip</a>
             </div>
         </div>
     </div>

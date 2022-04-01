@@ -18,5 +18,12 @@ module.exports.policies = {
   ***************************************************************************/
 
   // '*': true,
-
+  UserController: {
+    changePassword: 'isAdmin',
+    searchUser: 'isAdmin',
+    deleteUser: 'isAdmin',
+  },
+  CVController: {
+    createCV:'isTalent'
+  }
 };

@@ -6,7 +6,7 @@
         <input type="button" value="addone" onclick="add()">
     </div>
 </div>
-<form action="/cv/<%= cv.id %>/addWork" method="post">
+<form action="/cv/addWork/<%= cv.id %>" method="post">
     <div class="col-9">
         <div id="workFields" class="workFields">
             <div class="field">
@@ -15,7 +15,12 @@
                     <input class="input" type="text" name="org" id="org" required>
                 </div>
             </div>
-
+            <div class="field">
+                <label class="label">Position</label>
+                <div class="control">
+                    <input class="input" type="text" name="position" id="position" required>
+                </div>
+            </div>
             <div class="row justify-content-start">
                 <div class="col-4">
                     <label class="label">Start Time</label>
@@ -33,7 +38,7 @@
             <div class="field">
                 <label class="label">Description</label>
                 <div class="control">
-                    <textarea class="textarea" placeholder="Please describe the activity" type="text" name="description"
+                    <textarea class="textarea" placeholder="Please describe the experience" type="text" name="description"
                         rows="5"></textarea>
                 </div>
             </div>
@@ -52,7 +57,7 @@
 
             <div class="col-md-4 ms-auto">
                 <div class="control">
-                    <a class="button is-link" href="http://localhost:1337/cv/<%= cv.id %>/addActivity">Skip</a>
+                    <a class="button is-link" href="http://localhost:1337/cv/addActivity/<%= cv.id %>">Skip</a>
                 </div>
             </div>
 

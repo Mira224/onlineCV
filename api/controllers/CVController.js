@@ -262,28 +262,31 @@ module.exports = {
 
       await CV.updateOne(thatCV.id).set({ reference: thatCV.reference })
 
-      return res.view('talent/createContent', { cv: thatCV });
+      return res.view('talent/create/chooseTemplate', { cv: thatCV });
     }
 
   },
-  // chooseTemplate: async function (req, res) {
-  //   if (req.method == "GET") {
+  chooseTemplate: async function (req, res) {
+    if (req.method == "GET") {
 
-  //     var thatCV = await CV.findOne(req.params.id);
+      var thatCV = await CV.findOne(req.params.id);
 
-  //     if (!thatCV) return res.notFound();
+      if (!thatCV) return res.notFound();
 
-  //     return res.view('talent/create/chooseTemplate', { cv: thatCV });
+      return res.view('talent/create/chooseTemplate', { cv: thatCV });
 
-  //   } else {
+    } else {
 
-  //     var updatedCV = await CV.updateOne(req.params.id).set(req.body);
+      var thatCV = await CV.findOne(req.params.id);
+      if (!thatCV) return res.status(404).json("CV not found.");
 
-  //     if (!updatedCV) return res.notFound();
+      var updatedCV = await CV.updateOne(req.params.id).set(req.body);
 
-  //     return res.view('talent/createContent', { cv: thatCV });
-  //   }
-  // },
+      if (!updatedCV) return res.notFound();
+
+      return res.view('talent/createContent', { cv: UpdatedCV });
+    }
+  },
 
   //update content of each part
   updateContact: async function (req, res) {
@@ -555,14 +558,29 @@ module.exports = {
      return res.redirect('/cv/overview');
   },
 
-  viewCV: async function (req, res) {
-    var thatCV = await CV.findOne(req.params.id);
+  changeStatus: async function (req, res){
+    if (req.method == "GET") {
 
-    if (!thatCV) return res.status(404).json("CV not found.");
+      var thatCV = await CV.findOne(req.params.id);
 
-    return res.view('template/template-' + thatCV.template, { cv: thatCV, edus: thatCV.education, works: thatCV.work, activities: thatCV.activity, skills: thatCV.skill, refs: thatCV.reference });
+      if (!thatCV) return res.notFound();
 
+      return res.view('pages/allcv', { cv: thatCV });
 
+    } else {
+
+      var thatCV = await CV.findOne(req.params.id);
+
+      if (!thatCV) return res.notFound();
+
+      if (thatCV.status=="private") {
+        await CV.updateOne(thatCV.status).set({ status:'public' })
+      }else {
+        await CV.updateOne(thatCV.status).set({ status:'private' })
+      }
+
+      return res.view('pages/allcv', { cv: thatCV });
+    }
   },
 
   /////preview
@@ -580,7 +598,16 @@ module.exports = {
 
     if (!thatCV) return res.status(404).json("CV not found.");
 
-    return res.view('template/template-white', { cv: thatCV, edus: thatCV.education, works: thatCV.work, activities: thatCV.activity, skills: thatCV.skill, refs: thatCV.reference });
+    return res.view('template/template-white', { layout: false,cv: thatCV, edus: thatCV.education, works: thatCV.work, activities: thatCV.activity, skills: thatCV.skill, refs: thatCV.reference });
+
+  },
+  viewCV: async function (req, res) {
+    var thatCV = await CV.findOne(req.params.id);
+
+    if (!thatCV) return res.status(404).json("CV not found.");
+
+    return res.view('template/template-' + thatCV.template, { cv: thatCV, edus: thatCV.education, works: thatCV.work, activities: thatCV.activity, skills: thatCV.skill, refs: thatCV.reference });
+
 
   },
 

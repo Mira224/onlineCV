@@ -6,7 +6,7 @@
         <input type="button" value="addone" onclick="add()">
     </div>
 </div>
-<form action="/cv/<%= cv.id %>/updateWork" method="post">
+<form action="/cv/updateWork/<%= cv.id %>" method="post">
     <div class="col-9">
         <% works.forEach( function(work) { %>
         <div id="workFields" class="workFields">
@@ -16,7 +16,12 @@
                     <input class="input" type="text" name="org" id="org" value="<%= work.org%>" required>
                 </div>
             </div>
-
+            <div class="field">
+                <label class="label">Position</label>
+                <div class="control">
+                    <input class="input" type="text" name="position" id="position"  value="<%= work.position%>"required>
+                </div>
+            </div>
             <div class="row justify-content-start">
                 <div class="col-4">
                     <label class="label">Start Time</label>
@@ -54,7 +59,7 @@
 
             <div class="col-md-4 ms-auto">
                 <div class="control">
-                    <a class="button is-link" href="http://localhost:1337/cv/<%= cv.id %>/content">Back</a>
+                    <a class="button is-link" href="http://localhost:1337/cv/content/<%= cv.id %>">Back</a>
                 </div>
             </div>
 

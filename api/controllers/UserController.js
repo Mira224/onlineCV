@@ -104,7 +104,7 @@ module.exports = {
 
         await User.updateOne(thatUser.id).set({ password: password})
 
-        return res.ok();
+        return res.staus(200).redirect('/admin/searchuser')
           }
 
     },
