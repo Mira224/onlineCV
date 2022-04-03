@@ -20,14 +20,14 @@ module.exports = {
     username: {
       type: 'string',
       required: true,
-      unique:true,
+      unique: true,
     },
 
     password: {
       type: 'string',
       required: true,
     },
-    
+
     mobile: {
       type: 'string',
     },
@@ -37,11 +37,14 @@ module.exports = {
       // 'active'1, 'block'2, 'delete'0
       defaultsTo: 1,
     },
-   
+
     role: {
       type: 'string',
       isIn: ['admin', 'talent', 'visitor'],
       defaultsTo: 'talent'
+    },
+    refFile: {
+      type: "string",
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

@@ -1,0 +1,205 @@
+<style>
+  a {
+color:#2287C9;
+text-decoration: underline;
+}
+
+a:active {
+color:#2287C9;
+text-decoration: underline;
+}
+
+a:visited {
+color:#2287C9;
+text-decoration: underline;
+}
+
+a:hover {
+color:#339900;
+text-decoration: underline;
+}
+ </style>
+<link id="theme-style" rel="stylesheet" href="/css/blue.css">
+<base target="_blank">
+
+<article class="resume-wrapper text-center position-relative">
+  <div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
+    <header class="resume-header pt-4 pt-md-0">
+      <div class="media flex-column flex-md-row">
+
+        <div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
+          <div class="primary-info">
+            <h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase">
+              <%= cv.name%>
+            </h1>
+            <ul class="list-unstyled">
+              <a href="mailto:<%=cv.email%>" data-aos="fade-left" data-aos-delay="700">
+                <%=cv.email%>
+              </a>
+              <li><a><i class="fas fa-mobile-alt fa-fw mr-2" data-fa-transform="grow-6"></i>Phone: <%= cv.mobile%></a>
+              </li>
+            </ul>
+            <div class="secondary-info ml-md-auto mt-2">
+              <div class="download-area">
+                <a href="/cv/downloadFile/<%= cv.id %>/0"> Download Reference File</a>
+                <button onclick="window.print();">Download cv <i class="fa fa-download"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="resume-body p-5">
+      <section class="resume-section summary-section mb-5">
+        <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Objective</h2>
+        <div class="resume-section-content">
+          <p class="mb-0">
+            <%= cv.ps%>
+          </p>
+        </div>
+      </section>
+      <div class="row">
+        <div class="col-lg-9">
+          <section class="resume-section experience-section mb-5">
+            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Education</h2>
+            <div class="resume-section-content">
+              <div class="resume-timeline position-relative">
+                <% (edus || []).forEach( function(edu) { %>
+                  <article class="resume-timeline-item position-relative pb-5">
+
+                    <div class="resume-timeline-item-header mb-2">
+                      <div class="d-flex flex-column flex-md-row">
+                        <h3 class="resume-position-title font-weight-bold mb-1">
+                          <%= edu.major %>
+                        </h3>
+                        <div class="resume-company-name ml-auto">
+                          <%= edu.school %>
+                        </div>
+                      </div>
+                      <div class="resume-position-time">
+                        <%= edu.sTime %> - <%= edu.eTime %>
+                      </div>
+                    </div>
+                    <!--//resume-timeline-item-header-->
+                    <div class="resume-timeline-item-desc">
+                      <p>
+                        <%= edu.description %>
+                      </p>
+
+                    </div>
+                    <% }); %>
+                  </article>
+              </div>
+            </div>
+          </section>
+
+
+
+          <section class="resume-section experience-section mb-5">
+            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Work Experience</h2>
+            <div class="resume-section-content">
+              <% (works || []).forEach( function(work) { %>
+                <div class="resume-timeline position-relative">
+                  <article class="resume-timeline-item position-relative">
+                    <div class="resume-timeline-item-header mb-2">
+                      <div class="d-flex flex-column flex-md-row">
+                        <h3 class="resume-position-title font-weight-bold mb-1">
+                          <%= work.position %>
+                        </h3>
+                        <div class="resume-company-name ml-auto">
+                          <%= work.org %>
+                        </div>
+                      </div>
+                      <div class="resume-position-time">
+                        <%= work.sTime %> - <%= work.eTime %>
+                      </div>
+                    </div>
+                    <div class="resume-timeline-item-desc">
+                      <p>
+                        <%= work.description %>
+                      </p>
+
+                    </div>
+                  </article>
+                </div>
+                <% }); %>
+            </div>
+          </section>
+
+
+          <section class="resume-section experience-section mb-5">
+            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Activity</h2>
+            <div class="resume-section-content">
+              <% (activities || []).forEach( function(activity) { %>
+                <div class="resume-timeline position-relative">
+                  <article class="resume-timeline-item position-relative">
+                    <div class="resume-timeline-item-header mb-2">
+                      <div class="d-flex flex-column flex-md-row">
+                        <h3 class="resume-position-title font-weight-bold mb-1">
+                          <%= activity.title %>
+                        </h3>
+                        <div class="resume-company-name ml-auto">
+                          <%= activity.org %>
+                        </div>
+                      </div>
+                      <div class="resume-position-time">
+                        <%= activity.sTime %> - <%= activity.eTime %>
+                      </div>
+                    </div>
+                    <div class="resume-timeline-item-desc">
+                      <p>
+                        <%= activity.description %>
+                      </p>
+
+                    </div>
+                  </article>
+                </div>
+                <% }); %>
+            </div>
+          </section>
+
+
+        </div>
+
+        <div class="col-lg-3">
+          <section class="resume-section skills-section mb-5">
+            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Skill</h2>
+            <div class="resume-section-content">
+              <% (skills || []).forEach( function(skill) { %>
+                <div class="resume-skill-item">
+                  <h4 class="resume-skills-cat font-weight-bold">
+                    <span class="badge badge-light">
+                      <%= skill.content %> ( <%=skill.level %> )
+                    </span>
+                  </h4>
+
+                </div>
+                <% }); %>
+            </div>
+          </section>
+          <section class="resume-section reference-section mb-5">
+            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Reference</h2>
+            <div class="resume-section-content">
+              <ul class="list-unstyled resume-awards-list">
+                <% (refs || []).forEach( function(ref) { %>
+                  <li class="mb-2 pl-4 position-relative">
+                    <i class="resume-award-icon fas fa-trophy position-absolute" data-fa-transform="shrink-2"></i>
+                    <div class="resume-award-name">
+                      <%=ref.name %> (<%=ref.relationship %>)
+                    </div>
+                    <div class="resume-award-desc">
+                      <%=ref.comment %>
+                    </div>
+                  </li>
+                  <% }); %>
+              </ul>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</article>

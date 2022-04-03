@@ -21,10 +21,10 @@ module.exports.routes = {
 
   '/': { view: 'pages/homepage' },
   '/tempalte1': { view: 'template/template1' },
-  '/tempalte2': { view: 'template/template2' },
+ 
   '/dark': { view: 'template/template-dark' },
   '/white': { view: 'template/template-white' },
-
+  '/blue': { view: 'template/template-blue' },
   '/guide': { view: 'Tips/guide' },
   '/tips': { view: 'Tips/tips' },
 
@@ -45,6 +45,7 @@ module.exports.routes = {
 // view fixed cv with template//
   '/cv/dark/:id':"CVController.previewDark",
   '/cv/white/:id':"CVController.previewWhite",
+  '/cv/blue/:id':"CVController.previewBlue",
 
   // 'GET /cv/:id/update':'CVController.updatecv,',
   // 'POST /cv/:id/update':'CVController.updatecv,',
@@ -66,7 +67,7 @@ module.exports.routes = {
   'GET /cv/addActivity/:id': 'CVController.addActivity',
   'POST /cv/addActivity/:id': 'CVController.addActivity',
   'GET /cv/addRef/:id': 'CVController.addRef',
-  'POST /cv/addRef:id': 'CVController.addRef',
+  'POST /cv/addRef/:id': 'CVController.addRef',
   'GET /cv/chooseTemplate/:id': 'CVController.chooseTemplate',
   'POST /cv/chooseTemplate/:id': 'CVController.chooseTemplate',
 
@@ -83,8 +84,8 @@ module.exports.routes = {
 'POST /cv/updateActivity/:id': 'CVController.updateActivity',
 'GET /cv/updateRef/:id': 'CVController.updateRef',
 'POST /cv//updateRef:id': 'CVController.updateRef',
-'GET /cv/chooseTemplate/:id': 'CVController.updateTemplate',
-'POST /cv/chooseTemplate/:id': 'CVController.updateTemplate',
+'GET /cv/updateTemplate/:id': 'CVController.updateTemplate',
+'POST /cv/updateTemplate/:id': 'CVController.updateTemplate',
 
 
   'GET /cv/overview': 'CVController.overview',
@@ -93,7 +94,8 @@ module.exports.routes = {
   'POST /cv/view/:id': 'CVController.viewCV',
   'GET /cv/changeStatus/:id':'CVController.changeStatus',
   'POST /cv/changeStatus/:id':'CVController.changeStatus',
-
+  'GET /cv/downloadFile/:id/:index':'CVController.downloadRef',
+  
   'GET /changePW/:id':'UserController.changePassword',
   'POST /changePW/:id':'UserController.changePassword',
 
@@ -103,7 +105,7 @@ module.exports.routes = {
   // 'GET /admin/searchUser':'UserController.searchUser',
   // 'POST /admin/searchUser':'UserController.searchUser',
   'GET /admin/paginate':'UserController.paginate',
-  'POST /admin/:id/delete':'UserController.deleteUser',
+  '/admin/delete/:id':'UserController.deleteUser',
 
 
 

@@ -1,62 +1,79 @@
-<div class="row justify-content-between">
-    <div class="col-6">
-        <h2 id="content">Reference</h2>
-    </div>
-    <div class="col-6">
-        <input type="button" value="addone" onclick="add()">
-    </div>
+<div class="col-6">
+    <h2 id="content">Reference</h2>
 </div>
+
 <form action="/cv/addRef/<%= cv.id %>" method="post">
-    <div class="col-9">
-        <% refs.forEach( function(ref) { %>
-        <div class="refFields" id="refFields">
-            <div class="field">
-                <label class="label">Name</label>
-                <div class="control">
-                    <input class="input" type="text" name="name" id="name" value="<%= ref.name%>" required>
-                </div>
-            </div>
 
-
-            <div class="field">
-                <label class="label">Relationship</label>
-                <div class="control">
-                    <input class="input" type="text" name="relationship" id="relationship" value="<%= ref.relationship%>"  required>
-                </div>
-            </div>
-            <div class="field">
-                <label class="label">Contact</label>
-                <div class="control">
-                    <input class="input" type="text" name="contact" id="contact" value="<%= ref.contact%>" >
-                </div>
-            </div>
-            <div class="field">
-                <label class="label">Comment</label>
-                <div class="control">
-                    <textarea class="textarea" placeholder="Comment" type="text" name="comment" rows="5"
-                        required><%= ref.comment%>" </textarea>
-                </div>
-            </div>
-        </div>
-        <% }); %>
-        <div id="refFields_placeholder">
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="control">
-                    <button class="button is-link" type="submit">Save</button>
-                </div>
-            </div>
-
-            <div class="col-md-4 ms-auto">
-                <div class="control">
-                    <a class="button is-link" href="http://localhost:1337/cv/conent/<%= cv.id %>">Back</a>
-                </div>
-            </div>
+    <div class="uploadfile">
+        <h3>Upload Reference File</h3>
+        <div class="col-9">
+            <label for="formFileMultiple" class="form-label">Files input example</label>
+            <input class="form-control" type="file" id="formFileMultiple" multiple>
         </div>
 
     </div>
+    <br>
+    <div class="col-9">
+        <div class="row justify-content-between">
+            <div class="col-6">
+                <h3>Recommendation</h3>
+            </div>
+
+            <div class="col-6">
+                <input type="button" value="addone" onclick="add()">
+            </div>
+        </div>
+        <div class="col-9">
+            <% refs.forEach( function(ref) { %>
+                <div class="refFields" id="refFields">
+                    <div class="field">
+                        <label class="label">Name</label>
+                        <div class="control">
+                            <input class="input" type="text" name="name" id="name" value="<%= ref.name%>" required>
+                        </div>
+                    </div>
+
+
+                    <div class="field">
+                        <label class="label">Relationship</label>
+                        <div class="control">
+                            <input class="input" type="text" name="relationship" id="relationship"
+                                value="<%= ref.relationship%>" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Contact</label>
+                        <div class="control">
+                            <input class="input" type="text" name="contact" id="contact" value="<%= ref.contact%>">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Comment</label>
+                        <div class="control">
+                            <textarea class="textarea" placeholder="Comment" type="text" name="comment" rows="5"
+                                required><%= ref.comment%>" </textarea>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+                    <div id="refFields_placeholder">
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="control">
+                                <button class="button is-link" type="submit">Save</button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 ms-auto">
+                            <div class="control">
+                                <a class="button is-link" href="http://localhost:1337/cv/conent/<%= cv.id %>">Back</a>
+                            </div>
+                        </div>
+                    </div>
+
+        </div>
 </form>
 <script>
     var addone = "name:" + document.getElementById("name") + "relationship:" + document.getElementById("relationship") + "comment:" + document.getElementById("comment:") + "contact:" + document.getElementById("contact");

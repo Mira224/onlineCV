@@ -16,13 +16,13 @@
                             <%= cv.title %>
                         </td>
 
-                        <td><a class="button" href="http://localhost:1337/cv/<%= cv.id %>/content">Update</button></td>
-                        <td><a class="button" href="http://localhost:1337/cv/<%= cv.id %>/content">View</button></td>
+                        <td><a class="button" href="http://localhost:1337/cv/content/<%= cv.id %>">Update</button></td>
+                        <td><a class="button" href="http://localhost:1337/cv/view/<%= cv.id %>">View</button></td>
                         <td>
                             <!-- <a class="button" href="http://localhost:1337/cv/<%= cv.id %>/delete/"
                                >Delete</button> -->
-                            <a class="button" href="http://localhost:1337/cv/delete/<%= cv.id %>"
-                                onclick="myFunction()">Delete</button>
+                            <button class="button" href=""
+                                onclick="if (confirm('Delete it?')) { location.assign('http://localhost:1337/cv/delete/<%= cv.id %>'); }">Delete</button>
                         </td>
                         <td> <a class="button" href="http://localhost:1337/cv/changeStatus/<%= cv.id %>">
                             <%= cv.status %></button></td>

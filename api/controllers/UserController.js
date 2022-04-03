@@ -82,84 +82,68 @@ module.exports = {
 
         if (!deletedUser) return res.notFound();
 
-        return res.staus(200).redirect('/admin/searchuser')
+        return res.status(200).redirect('/admin/searchuser')
     },
 
     changePassword: async function (req, res) {
         if (req.method == "GET") {
 
-            var thatUser = await CV.findOne(req.params.id);
-      
-      
+            var thatUser = await User.findOne(req.params.id);
+
+
             if (!thatUser) return res.status(404).json("User not found.");
-      
-            return res.view('admin/changePassword', { user: thatUser});
-          } else {
 
-        var thatUser = await User.findOne(req.params.id);
+            return res.view('admin/changePassword', { user: thatUser });
+        } else {
 
-        if (!thatUser) return res.notFound();
+            var thatUser = await User.findOne(req.params.id);
 
-        var password = await bcrypt.hash(req.body.password, 10);
+            if (!thatUser) return res.notFound();
 
-        await User.updateOne(thatUser.id).set({ password: password})
+            var password = await bcrypt.hash(req.body.password, 10);
 
-        return res.staus(200).redirect('/admin/searchuser')
-          }
+            await User.updateOne(thatUser.id).set({ password: password })
+
+            return res.status(200).redirect('/admin/searchuser')
+        }
 
     },
 
 
     searchUser: async function (req, res) {
-        if (req.method=="GET"){
+        if (req.method == "GET") {
 
             let allusers = await User.find()
             console.log(allusers)
 
-            return res.view('admin/searchuser', { allusers: allusers });
+            return res.view('admin/userpage', { users: allusers });
         }
-        else{
+        else {
 
-        var whereClause = {};
+            var whereClause = {};
 
-        if (req.query.username) whereClause.username = { contains: req.query.username };
+            if (req.query.username) whereClause.username = { contains: req.query.username };
 
-        // var email = parseInt(req.query.email);
-        if (req.query.email) whereClause.email = email;
-        console.log(whereClause);
+            if (req.query.email) whereClause.email = email;
+            console.log('whereClause:'+whereClause.email);
 
-        if (req.wantsJSON) {
-            var limit = Math.max(req.query.limit, 2) || 2;
-            var offset = Math.max(req.query.offset, 0) || 0;
+            if (req.wantsJSON) {
+                var thoseUsers = await User.find({
+                    where: whereClause,
+                    sort: 'email'
+                });
+
+                return res.json({ thoseUsers});
+            }
 
             var thoseUsers = await User.find({
                 where: whereClause,
-                sort: 'email'
+                sort: 'email',
             });
-
-            var count = await User.find({
-                where: whereClause,
-                limit: limit,
-                skip: offset,
-            });
-            return res.json({ thoseUsers, count });
-
-
-        } else {
-
-            var thoseUsers = await User.find({
-                where: whereClause,
-                sort: 'email'
-            });
-            var count = await User.find({
-                where: whereClause,
-            });
-
-            return res.view('admin/userpage', { users: thoseUsers, count: count });
-
+            
+            console.log('findusers'+thoseUsers);
+            return res.view('admin/userpage', { users: thoseUsers });
         }
-    }
-
     },
     paginate: async function (req, res) {
 

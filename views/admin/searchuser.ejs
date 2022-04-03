@@ -4,7 +4,7 @@
         <div class="col-5 col-12-xsmall">
             <label class="label">Username</label>
             <div class="control">
-                <input class="input" type="text" name="searchUsername" id="searchUsername" list="userlist">
+                <input class="input" type="text" name="username" id="username" list="userlist">
                 <datalist id="userlist">
                     <% allusers.forEach(function(u){%>
                         <option>
@@ -19,7 +19,7 @@
         <div class="col-5 col-12-xsmall">
             <label class="label">Email</label>
             <div class="control">
-                <input class="input" type="text" name="searchEmail" id="searchEmail" list="emaillist">
+                <input class="input" type="text" name="email" id="email" list="emaillist">
                 <datalist id="emaillist">
                     <% allusers.forEach(function(u){%>
                         <option>
@@ -30,10 +30,6 @@
             </div>
 
         </div>
-
-      
-
-
         <div class="field">
             <div class="control">
                 <button class="button is-info" type="submit">Search</button>

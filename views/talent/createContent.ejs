@@ -51,7 +51,7 @@
                                         <h6 class="card-subtitle mb-2 text-muted">Skills</h6>
                                         <p class="card-text">Introduce what you can do.</p>
                                         <a href="http://localhost:1337/cv/updateSkill/<%= cv.id %>"
-                                                class="card-link">Create skills</a>
+                                                class="card-link">View skills</a>
 
                                 </div>
                         </div>
@@ -86,7 +86,7 @@
                 <div class="tempalte-area">
                         <label class="label">Choose template</label>
                         <p>Please select a template:</p>
-                        <div class="control">
+                        <!-- <div class="control">
 
                                 <div class="col-4 col-12-small">
                                         <input type="radio" id="template-dark" name="template" value="template-dark">
@@ -94,12 +94,18 @@
                                         <a target="_blank"
                                                 href="http://localhost:1337/cv/dark/<%= cv.id %>">Preview-dark</a>
                                 </div>
-                        </div>
+                        </div> -->
                         <div class="col-4 col-12-small">
                                 <input type="radio" id="template-white" name="template" value="template-white">
                                 <label for="template-white">White</label>
                                 <a target="_blank" href="http://localhost:1337/cv/white/<%= cv.id %>">Preview-white</a>
                         </div>
+                        <div class="col-4 col-12-small">
+                                <input type="radio" id="template-blue" name="template" value="template-blue">
+                                <label for="template-blue">Blue</label>
+                                <a target="_blank" href="http://localhost:1337/cv/blue/<%= cv.id %>">Preview-blue</a>
+                    
+                            </div>
 
                 </div>
               
@@ -114,3 +120,6 @@
         </form>
 
 </div>
+<script>
+        document.querySelector('input[type="radio"][value="<%= cv.template %>"]').setAttribute('checked', 'checked')
+</script>
